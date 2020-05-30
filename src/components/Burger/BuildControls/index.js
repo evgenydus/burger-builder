@@ -11,7 +11,14 @@ const controls = [
   { label: 'Meat', type: 'meat' },
 ]
 
-const BuildControls = ({ disabled, ingredientAdded, ingredientRemoved, price, isPurchasable }) => {
+const BuildControls = ({
+  clear,
+  disabled,
+  ingredientAdded,
+  ingredientRemoved,
+  isPurchasable,
+  price,
+}) => {
   const currentPrice = price.toFixed(2)
 
   return (
@@ -28,7 +35,21 @@ const BuildControls = ({ disabled, ingredientAdded, ingredientRemoved, price, is
           removed={() => ingredientRemoved(type)}
         />
         ))}
-        <button className="order-button" disabled={isPurchasable}>Order now!</button>
+        <div className="checkout">
+          <button
+            className="checkout-button clear"
+            disabled={isPurchasable}
+            onClick={clear}
+          >
+            Clear all
+          </button>
+          <button
+            className="checkout-button order"
+            disabled={isPurchasable}
+          >
+            Order now!
+          </button>
+        </div>
     </div>
   )
 }

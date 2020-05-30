@@ -10,19 +10,19 @@ const INGREDIENT_PRICES = {
   salad: 0.5,
 }
 
-// TODO: Implement clear button
+const initialState = {
+  ingredients: {
+    bacon: 0,
+    cheese: 0,
+    meat: 0,
+    salad: 0,
+  },
+  totalPrice: 4,
+  isPurchasable: false,
+}
 
 class BurgerBuilder extends Component {
-  state = {
-    ingredients: {
-      bacon: 0,
-      cheese: 0,
-      meat: 0,
-      salad: 0,
-    },
-    totalPrice: 4,
-    isPurchasable: false,
-  }
+  state = { ...initialState }
 
   updatePurchaseState = (ingredients) => {
     const sum = Object.keys(ingredients)
@@ -75,6 +75,10 @@ class BurgerBuilder extends Component {
     this.updatePurchaseState(updatedIngredients)
   }
 
+  clearAllHandler = () => {
+    this.setState({ ...initialState })
+  }
+
   render() {
     const { ingredients, totalPrice, isPurchasable } = this.state
     const disabledInfo = {
@@ -89,11 +93,12 @@ class BurgerBuilder extends Component {
       <>
         <Burger ingredients={ingredients} />
         <BuildControls
+          clear={this.clearAllHandler}
           disabled={disabledInfo}
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
-          price={totalPrice}
           isPurchasable={!isPurchasable}
+          price={totalPrice}
         />
       </>
     )
