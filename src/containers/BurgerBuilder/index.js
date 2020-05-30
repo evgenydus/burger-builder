@@ -10,6 +10,8 @@ const INGREDIENT_PRICES = {
   salad: 0.5,
 }
 
+// TODO: Implement clear button
+
 class BurgerBuilder extends Component {
   state = {
     ingredients: {
@@ -59,7 +61,7 @@ class BurgerBuilder extends Component {
   }
 
   render() {
-    const { ingredients } = this.state
+    const { ingredients, totalPrice } = this.state
     const disabledInfo = {
       ...ingredients
     }
@@ -75,6 +77,7 @@ class BurgerBuilder extends Component {
           disabled={disabledInfo}
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
+          price={totalPrice}
         />
       </>
     )
