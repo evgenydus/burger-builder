@@ -18,6 +18,7 @@ const BuildControls = ({
   ingredientRemoved,
   isPurchasable,
   price,
+  purchase,
 }) => {
   const currentPrice = price.toFixed(2)
 
@@ -46,6 +47,7 @@ const BuildControls = ({
           <button
             className="checkout-button order"
             disabled={isPurchasable}
+            onClick={purchase}
           >
             Order now!
           </button>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css'
 
-const BuildControl = ({ added, disabled, label , removed }) => {
+const BuildControl = ({ added, disabled, label, removed }) => {
 
   return (
     <div className="build-control">
