@@ -2,7 +2,9 @@ import React from 'react';
 
 import './styles.css'
 
-const OrderSummary = ({ ingredients }) => {
+import Button from '../../UI/Button';
+
+const OrderSummary = ({ ingredients, price, purchaseCancelled, purchaseContinue }) => {
   const ingredientSummary = Object.keys(ingredients).map(ingredientKey => {
     return (
       <li key={ingredientKey}>
@@ -11,6 +13,8 @@ const OrderSummary = ({ ingredients }) => {
     )
   })
 
+  const currentPrice = price.toFixed(2)
+
   return (
     <>
       <h3>Your Order</h3>
@@ -18,7 +22,10 @@ const OrderSummary = ({ ingredients }) => {
       <ul>
         {ingredientSummary}
       </ul>
+      <p className='strong'>Total price: {currentPrice}</p>
       <p>Continue to Checkout</p>
+      <Button btnType={['danger']} clicked={purchaseCancelled}>CANCEL</Button>
+      <Button btnType={['success']} clicked={purchaseContinue}>CONTINUE</Button>
     </>
   )
 }
