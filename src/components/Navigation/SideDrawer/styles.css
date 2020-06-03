@@ -1,0 +1,38 @@
+.side-drawer {
+  background-color: #fff;
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  max-width: 70%;
+  padding: 32px 16px;
+  position: fixed;
+  top: 0;
+  transition: transform .3s ease-out;
+  width: 280px;
+  z-index: 200;
+}
+
+@media (min-width: 500px) {
+  .side-drawer {
+    display: none;
+  }
+}
+
+.open {
+  transform: translateX(0)
+}
+
+.close {
+  transform: translateX(-100%);
+}
+
+.side-drawer .logo {
+  height: 5%;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 499px) {
+  .desktop-only {
+    display: none;
+  }
+}

@@ -1,0 +1,23 @@
+.drawer-toggle {
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: space-around;
+  padding: 10px 0;
+  width: 40px;
+}
+
+.drawer-toggle div {
+  background-color: white;
+  height: 3px;
+  width: 90%;
+}
+
+@media (min-width: 500px) {
+  .drawer-toggle {
+    display: none;
+  }
+}
