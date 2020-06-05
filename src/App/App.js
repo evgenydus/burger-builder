@@ -2,8 +2,8 @@ import React from 'react';
 
 import './App.css';
 
-import BurgerBuilder from '../containers/BurgerBuilder';
-import Layout from '../components/Layout';
+import BurgerBuilder from '../containers/BurgerBuilder/BurgerBuilder';
+import Layout from '../components/Layout/Layout';
 
 const App = () => {
   return (

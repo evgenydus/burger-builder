@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './styles.css'
+import './Logo.css'
 
 import burgerLogo from '../../assets/logo.png'
 

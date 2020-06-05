@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './styles.css'
+import './Button.css'
 
 const Button = ({ btnType, children, clicked }) => {
   const classList = ['button', ...btnType].join(' ')

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './styles.css'
+import './NavigationItem.css'
 
 const NavigationItem = ({ active, children, link }) => (
   <li className="navigation-item">

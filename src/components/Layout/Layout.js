@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import './styles.css'
+import './Layout.css'
 
-import SideDrawer from '../Navigation/SideDrawer';
-import Toolbar from '../Navigation/Toolbar';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
 
 class Layout extends Component {
   state = {

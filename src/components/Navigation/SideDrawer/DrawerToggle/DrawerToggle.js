@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './styles.css'
+import './DrawerToggle.css'
 
 const DrawerToggle = ({ clicked }) => (
   <div className='drawer-toggle' onClick={clicked}>

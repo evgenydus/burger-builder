@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-import BuildControls from '../../components/Burger/BuildControls';
-import Burger from '../../components/Burger';
-import Modal from '../../components/UI/Modal';
-import OrderSummary from '../../components/Burger/OrderSummary';
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import Burger from '../../components/Burger/Burger';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const breadPrice = 4
 
@@ -108,7 +108,7 @@ class BurgerBuilder extends Component {
 
     return (
       <>
-        <Modal modalClosed={this.purchaseCancelHandler} show={isPurchasing}>
+        <Modal modalClosed={this.purchaseCancelHandler} isVisible={isPurchasing}>
           <OrderSummary
             ingredients={ingredients}
             price={totalPrice}
