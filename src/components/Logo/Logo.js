@@ -6,9 +6,7 @@ import burgerLogo from '../../assets/logo.png'
 
 const Logo = () => (
   <div className="logo">
-    <a href="#">
-      <img src={burgerLogo} alt="logo"/>
-    </a>
+    <img src={burgerLogo} alt="logo"/>
   </div>
 )
 
