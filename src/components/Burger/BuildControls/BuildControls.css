@@ -40,23 +40,23 @@
   }
 }
 
-.clear {
+.clear-btn {
   background-color: #f87373;
   color: #eee;
   margin-right: 10px;
 }
 
-.clear:hover, .clear:active {
+.clear-btn:hover, .clear-btn:active {
   background-color: #fd3f3f;
   border: 1px solid #966909;
 }
 
-.order {
+.order-btn {
   background-color: #dad735;
   color: #966909;
 }
 
-.order:hover, .order:active {
+.order-btn:hover, .order-btn:active {
   background-color: #a0db41;
   border: 1px solid #966909;
   color: #966909;
