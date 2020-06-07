@@ -5,7 +5,7 @@ import './CheckoutSummary.css'
 import Burger from '../../Burger/Burger';
 import Button from '../../UI/Button/Button';
 
-const CheckoutSummary = ({ ingredients }) => {
+const CheckoutSummary = ({ checkoutCancelled, checkoutContinued, ingredients }) => {
 
   return (
     <div className="checkout-summary">
@@ -13,8 +13,8 @@ const CheckoutSummary = ({ ingredients }) => {
       <div className="checkout-burger">
         <Burger ingredients={ingredients}/>
       </div>
-      <Button btnType={['danger']} clicked>Cancel</Button>
-      <Button btnType={['success']} clicked>Continue</Button>
+      <Button btnType={['danger']} clicked={checkoutCancelled}>Cancel</Button>
+      <Button btnType={['success']} clicked={checkoutContinued}>Continue</Button>
     </div>
   )
 }
