@@ -24,8 +24,8 @@ const OrderSummary = ({ ingredients, price, purchaseCancelled, purchaseContinue 
       </ul>
       <p className="strong">Total price: {currentPrice}</p>
       <p>Continue to Checkout</p>
-      <Button btnType={['danger']} clicked={purchaseCancelled}>CANCEL</Button>
-      <Button btnType={['success']} clicked={purchaseContinue}>CONTINUE</Button>
+      <Button btnType={['danger']} clicked={purchaseCancelled}>Cancel</Button>
+      <Button btnType={['success']} clicked={purchaseContinue}>Continue</Button>
     </>
   )
 }

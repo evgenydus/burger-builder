@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import './Burger.css'
 
@@ -27,4 +28,4 @@ const Burger = ({ ingredients }) => {
   )
 }
 
-export default Burger
+export default withRouter(Burger)
