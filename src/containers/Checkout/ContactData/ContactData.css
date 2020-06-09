@@ -8,10 +8,6 @@
   width: 80%;
 }
 
-.contact {
-  display: block;
-}
-
 @media (min-width: 600px) {
   .contact-data {
     width: 500px;
