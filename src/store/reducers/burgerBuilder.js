@@ -1,14 +1,10 @@
 import * as actionTypes from '../actions/actionTypes'
-import { breadPrice, INGREDIENT_PRICES } from '../../appData/appData';
+import { BREAD_PRICE, EMPTY_BURGER, INGREDIENT_PRICES } from '../../appData/appData';
 
 const initialState = {
-  ingredients: {
-    salad: 0,
-    bacon: 0,
-    cheese: 0,
-    meat: 0,
-  },
-  totalPrice: breadPrice,
+  ingredients: null,
+  totalPrice: BREAD_PRICE,
+  isError: false,
 }
 
 const burgerBuilder = (state = initialState, action) => {
@@ -36,7 +32,21 @@ const burgerBuilder = (state = initialState, action) => {
     case actionTypes.CLEAR_BURGER:
       return {
         ...state,
-        ingredients: initialState.ingredients,
+        ingredients: EMPTY_BURGER,
+        isError: false,
+      }
+
+    case actionTypes.SET_INGREDIENTS:
+      return {
+        ...state,
+        ingredients: action.ingredients,
+        isError: false,
+      }
+
+    case actionTypes.FETCH_INGREDIENTS_FAILED:
+      return {
+        ...state,
+        isError: true,
       }
 
     default:

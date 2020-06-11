@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import axios from '../../axios-orders'
 import { connect } from 'react-redux'
 import * as burgerBuilderActions from '../../store/actions/index';
+import axios from '../../axios-orders'
+
 
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Burger from '../../components/Burger/Burger';
@@ -12,21 +13,13 @@ import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHan
 
 const initialState = {
   isPurchasing: false,
-  isLoading: false,
-  isError: false,
 }
 
 class BurgerBuilder extends Component {
   state = { ...initialState }
 
   componentDidMount() {
-    // axios.get('https://burger-builder-4a7da.firebaseio.com/ingredients.json')
-    //   .then(response => {
-    //     this.setState({ingredients: response.data})
-    //   })
-    //   .catch(error => {
-    //     this.setState({ isError: true })
-    //   })
+    this.props.onInitIngredients()
   }
 
   updatePurchaseState = (ingredients) => {
@@ -55,13 +48,12 @@ class BurgerBuilder extends Component {
 
   render() {
     const {
-      isError,
-      isLoading,
       isPurchasing,
     } = this.state
 
     const {
       ings,
+      isError,
       onClearBurger,
       onIngredientAdded,
       onIngredientRemoved,
@@ -103,10 +95,6 @@ class BurgerBuilder extends Component {
       />
     }
 
-    if (isLoading) {
-      orderSummary = <Spinner/>
-    }
-
     return (
       <>
         <Modal modalClosed={this.purchaseCancelHandler} isVisible={isPurchasing}>
@@ -123,6 +111,7 @@ const mapStateToProps = state => {
   return {
     ings: state.ingredients,
     price: state.totalPrice,
+    isError: state.isError,
   }
 }
 
@@ -131,7 +120,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
-    onClearBurger: () => dispatch(burgerBuilderActions.clearBurger())
+    onClearBurger: () => dispatch(burgerBuilderActions.clearBurger()),
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
   }
 }
 
