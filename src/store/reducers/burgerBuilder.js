@@ -46,6 +46,7 @@ const burgerBuilder = (state = initialState, action) => {
           cheese,
           meat,
         },
+        totalPrice: BREAD_PRICE,
         isError: false,
       }
 
