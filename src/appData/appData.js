@@ -13,3 +13,10 @@ export const EMPTY_BURGER = {
   meat: 0,
   salad: 0,
 }
+
+export const authEndpoints = {
+  signUp: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
+  signIn: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+}
+
+export const firebaseApiKey = 'AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw'
