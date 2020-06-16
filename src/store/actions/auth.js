@@ -9,10 +9,11 @@ export const authStart = () => {
   }
 }
 
-export const authSuccess = (authData) => {
+export const authSuccess = (idToken, userId) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    authData,
+    idToken,
+    userId,
   }
 }
 
@@ -35,14 +36,16 @@ export const auth = (email, password, isSignUp) => {
     const { signUp, signIn } = authEndpoints
     const endpoint = isSignUp ? signUp : signIn
 
+    console.log(axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw', authData))
+
     axios.post(`${endpoint}${firebaseApiKey}`, authData)
       .then(response => {
+        const { idToken, localId } = response.data
         console.log(response)
-        dispatch(authSuccess(response.data))
+        dispatch(authSuccess(idToken, localId))
       })
       .catch(err => {
-        console.log(err)
-        dispatch(authFail(err))
+        dispatch(authFail(err.response.data.error))
       })
   }
 }

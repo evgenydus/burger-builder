@@ -6,6 +6,7 @@ import './Auth.css'
 import * as actions from '../../store/actions/index'
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Auth extends Component {
   state = {
@@ -100,6 +101,7 @@ class Auth extends Component {
   }
 
   render () {
+    const { isLoading, error } = this.props
     const { controls, isSignUp } = this.state
     const formElementsArray = []
 
@@ -110,7 +112,7 @@ class Auth extends Component {
       })
     }
 
-    const form = formElementsArray.map(formElement => {
+    let form = formElementsArray.map(formElement => {
       return (<Input
         changed={(event) => this.inputChangedHandler(event, formElement.id)}
         elementConfig={formElement.config.elementConfig}
@@ -123,8 +125,15 @@ class Auth extends Component {
         />)
     })
 
+    if (isLoading) {
+      form = <Spinner />
+    }
+
+    const errorMessage = error ? <p>{error.message}</p> : null
+
     return (
       <div className="auth">
+        {errorMessage}
         <form onSubmit={this.submitHandler}>
           {form}
           <Button btnType={['success']}>Submit</Button>
@@ -140,10 +149,17 @@ class Auth extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isLoading: state.auth.isLoading,
+    error: state.auth.error,
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)
