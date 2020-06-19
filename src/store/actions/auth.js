@@ -24,6 +24,20 @@ export const authFail = error => {
   }
 }
 
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  }
+}
+
+export const checkAuthTimeout = (expirationTime) => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(logout())
+    }, expirationTime * 1000)
+  }
+}
+
 export const auth = (email, password, isSignUp) => {
   return dispatch => {
     dispatch(authStart())
@@ -36,13 +50,12 @@ export const auth = (email, password, isSignUp) => {
     const { signUp, signIn } = authEndpoints
     const endpoint = isSignUp ? signUp : signIn
 
-    console.log(axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw', authData))
-
     axios.post(`${endpoint}${firebaseApiKey}`, authData)
       .then(response => {
-        const { idToken, localId } = response.data
+        const { idToken, localId, expiresIn } = response.data
         console.log(response)
         dispatch(authSuccess(idToken, localId))
+        dispatch(checkAuthTimeout(expiresIn))
       })
       .catch(err => {
         dispatch(authFail(err.response.data.error))
