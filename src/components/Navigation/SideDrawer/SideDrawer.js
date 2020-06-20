@@ -11,7 +11,7 @@ const SideDrawer = ({ closed, open }) => {
 
   return (
     <>
-      <Backdrop clicked={closed} show={open}/>
+      <Backdrop clicked={closed} isVisible={open}/>
       <div className={classList}>
         <Logo />
         <nav>
