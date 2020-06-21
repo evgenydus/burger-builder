@@ -10,6 +10,7 @@ export const authStart = () => {
 }
 
 export const authSuccess = (idToken, userId) => {
+
   return {
     type: actionTypes.AUTH_SUCCESS,
     idToken,
@@ -25,6 +26,10 @@ export const authFail = error => {
 }
 
 export const logout = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('expirationDate')
+  localStorage.removeItem('userId')
+
   return {
     type: actionTypes.AUTH_LOGOUT,
   }
@@ -55,7 +60,11 @@ export const auth = (email, password, isSignUp) => {
     axios.post(`${endpoint}${firebaseApiKey}`, authData)
       .then(response => {
         const { idToken, localId, expiresIn } = response.data
-        console.log(response)
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000)
+
+        localStorage.setItem('token', idToken)
+        localStorage.setItem('expirationDate', expirationDate)
+        localStorage.setItem('userId', localId)
         dispatch(authSuccess(idToken, localId))
         dispatch(checkAuthTimeout(expiresIn))
       })
@@ -69,5 +78,27 @@ export const setAuthRedirectPath = (path) => {
   return {
     type: actionTypes.SET_AUTH_REDIRECT_PATH,
     path,
+  }
+}
+
+export const authCheckState = () => {
+  return dispatch => {
+    const token = localStorage.getItem('token')
+
+    if (!token) {
+      dispatch(logout())
+    } else {
+      const expirationDate = new Date(localStorage.getItem('expirationDate'))
+
+      if (expirationDate <= new Date()) {
+        dispatch(logout())
+      } else {
+        const userId = localStorage.getItem('userId')
+        const authTimeout = (expirationDate.getTime() - new Date().getTime()) / 1000
+
+        dispatch(authSuccess(token, userId))
+        dispatch(checkAuthTimeout(authTimeout))
+      }
+    }
   }
 }
