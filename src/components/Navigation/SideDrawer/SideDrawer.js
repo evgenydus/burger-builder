@@ -6,7 +6,7 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 
-const SideDrawer = ({ closed, open }) => {
+const SideDrawer = ({ closed, isAuth, open }) => {
   const classList = `side-drawer ${open ? 'open' : 'close'}`
 
   return (
@@ -15,7 +15,7 @@ const SideDrawer = ({ closed, open }) => {
       <div className={classList}>
         <Logo />
         <nav>
-          <NavigationItems />
+          <NavigationItems isAuth={isAuth} />
         </nav>
       </div>
     </>
