@@ -97,6 +97,7 @@ class ContactData extends Component {
   }
 
   orderHandler = (event) => {
+    const { ings, onOrderBurger, price, token, userId } = this.props
     event.preventDefault()
 
     const formData = {}
@@ -105,12 +106,13 @@ class ContactData extends Component {
     }
 
     const order = {
-      ingredients: this.props.ings,
-      price: this.props.price,
+      ingredients: ings,
+      price: price,
       orderData: formData,
+      userId,
     }
 
-    this.props.onOrderBurger(order, this.props.token)
+    onOrderBurger(order, token)
   }
 
   checkValidity(value, rules) {
@@ -205,6 +207,7 @@ const mapStateToProps = state => {
     price: state.burgerBuilder.totalPrice,
     isLoading: state.order.isLoading,
     token: state.auth.token,
+    userId: state.auth.userId,
   }
 }
 
