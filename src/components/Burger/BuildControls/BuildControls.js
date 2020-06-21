@@ -16,11 +16,14 @@ const BuildControls = ({
   disabled,
   ingredientAdded,
   ingredientRemoved,
+  isAuth,
   isPurchasable,
   price,
   purchase,
 }) => {
   const currentPrice = price.toFixed(2)
+
+  const orderBtnText = isAuth ? 'Order now!' : `Sign up to order`
 
   return (
     <div className='build-controls'>
@@ -49,7 +52,7 @@ const BuildControls = ({
             disabled={isPurchasable}
             onClick={purchase}
           >
-            Order now!
+            {orderBtnText}
           </button>
         </div>
     </div>
