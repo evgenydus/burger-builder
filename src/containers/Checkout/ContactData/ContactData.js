@@ -9,6 +9,7 @@ import Button from '../../../components/UI/Button/Button';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../../components/hoc/withErrorHandler/withErrorHandler';
+import { checkValidity, updateObject } from '../../../shared/utility';
 
 class ContactData extends Component {
   state = {
@@ -50,6 +51,7 @@ class ContactData extends Component {
           isRequired: true,
           minLength: 5,
           maxLength: 5,
+          isNumeric: true,
         },
         isValid: false,
         isTouched: false,
@@ -76,6 +78,7 @@ class ContactData extends Component {
         value: '',
         validation: {
           isRequired: true,
+          isEmail: true,
         },
         isValid: false,
         isTouched: false,
@@ -115,33 +118,16 @@ class ContactData extends Component {
     onOrderBurger(order, token)
   }
 
-  checkValidity(value, rules) {
-    let isValid = true
-
-    if (rules.isRequired) {
-      isValid = value.trim() !== '' && isValid
-    }
-
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid
-    }
-
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid
-    }
-
-    return isValid
-  }
-
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedOrderForm = { ...this.state.orderForm }
-    const updatedFormElement = { ...updatedOrderForm[inputIdentifier] }
+    const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+      value: event.target.value,
+      isValid: checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
+      isTouched: true,
+    })
 
-    updatedFormElement.value = event.target.value
-    updatedFormElement.isValid =
-      this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
-    updatedFormElement.isTouched = true
-    updatedOrderForm[inputIdentifier] = updatedFormElement
+    const updatedOrderForm = updateObject(this.state.orderForm, {
+      [inputIdentifier]: updatedFormElement,
+    })
 
     let isFormValid = true
     for (let inputIdentifier in updatedOrderForm) {

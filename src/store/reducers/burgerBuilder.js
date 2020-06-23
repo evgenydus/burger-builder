@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes'
 import { BREAD_PRICE, EMPTY_BURGER, INGREDIENT_PRICES } from '../../appData/appData';
-import { updateObject } from '../utility'
+import { updateObject } from '../../shared/utility'
 
 const initialState = {
   ingredients: null,
