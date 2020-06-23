@@ -12,7 +12,7 @@ const SideDrawer = ({ closed, isAuth, open }) => {
   return (
     <>
       <Backdrop clicked={closed} isVisible={open}/>
-      <div className={classList}>
+      <div className={classList} onClick={closed}>
         <Logo />
         <nav>
           <NavigationItems isAuth={isAuth} />

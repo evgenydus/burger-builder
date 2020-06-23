@@ -136,13 +136,10 @@ class Auth extends Component {
       form = <Spinner />
     }
 
-    const errorMessage = error ? <p>{error.message}</p> : null
-    const authRedirect = isAuthenticated ? <Redirect to={authRedirectPath} /> : null
-
     return (
       <div className="auth">
-        {authRedirect}
-        {errorMessage}
+        {isAuthenticated && <Redirect to={authRedirectPath} />}
+        {error && <p>{error.message}</p>}
         <form onSubmit={this.submitHandler}>
           {form}
           <Button btnType={['success']}>Submit</Button>
