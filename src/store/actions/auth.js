@@ -1,7 +1,4 @@
-import axios from 'axios'
-
 import * as actionTypes from './actionTypes'
-import { firebaseApiKey, authEndpoints } from '../../appData/appData';
 
 export const authStart = () => {
   return {
@@ -65,23 +62,7 @@ export const setAuthRedirectPath = (path) => {
 }
 
 export const authCheckState = () => {
-  return dispatch => {
-    const token = localStorage.getItem('token')
-
-    if (!token) {
-      dispatch(logout())
-    } else {
-      const expirationDate = new Date(localStorage.getItem('expirationDate'))
-
-      if (expirationDate <= new Date()) {
-        dispatch(logout())
-      } else {
-        const userId = localStorage.getItem('userId')
-        const authTimeout = (expirationDate.getTime() - new Date().getTime()) / 1000
-
-        dispatch(authSuccess(token, userId))
-        dispatch(checkAuthTimeout(authTimeout))
-      }
-    }
+  return {
+    type: actionTypes.AUTH_CHECK_STATE
   }
 }
