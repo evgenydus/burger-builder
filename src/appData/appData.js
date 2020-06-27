@@ -20,3 +20,5 @@ export const authEndpoints = {
 }
 
 export const firebaseApiKey = 'AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw'
+
+export const ingredientsUrl = 'https://burger-builder-4a7da.firebaseio.com/ingredients.json'
