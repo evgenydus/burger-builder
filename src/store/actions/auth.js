@@ -32,42 +32,28 @@ export const logout = () => {
   }
 }
 
+export const logoutSucceed = () => {
+
+  return {
+    type: actionTypes.AUTH_LOGOUT,
+  }
+}
+
 export const checkAuthTimeout = (expiresIn) => {
   const expirationTime = expiresIn * 1000
 
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(logout())
-    }, expirationTime)
+  return {
+    type: actionTypes.AUTH_CHECK_TIMEOUT,
+    expirationTime,
   }
 }
 
 export const auth = (email, password, isSignUp) => {
-  return dispatch => {
-    dispatch(authStart())
-    const authData = {
-      email,
-      password,
-      returnSecureToken: true,
-    }
-
-    const { signUp, signIn } = authEndpoints
-    const endpoint = isSignUp ? signUp : signIn
-
-    axios.post(`${endpoint}${firebaseApiKey}`, authData)
-      .then(response => {
-        const { idToken, localId, expiresIn } = response.data
-        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000)
-
-        localStorage.setItem('token', idToken)
-        localStorage.setItem('expirationDate', expirationDate)
-        localStorage.setItem('userId', localId)
-        dispatch(authSuccess(idToken, localId))
-        dispatch(checkAuthTimeout(expiresIn))
-      })
-      .catch(err => {
-        dispatch(authFail(err.response.data.error))
-      })
+  return {
+    type: actionTypes.AUTH_USER,
+    email,
+    password,
+    isSignUp,
   }
 }
 
