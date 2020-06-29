@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 [Link to staging environment](https://burger-builder-21.netlify.app/)
 
 ## Available Scripts
