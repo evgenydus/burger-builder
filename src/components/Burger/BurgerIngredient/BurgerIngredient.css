@@ -5,8 +5,11 @@
   box-shadow: inset -45px 0 #EA5B42;
   height: 30%;
   margin: 0 auto;
+  overflow: hidden;
   position: relative;
   width: 75%;
+  /*  TODO: fix mobile safari box-shadow*/
+  /*  -webkit-mask-image: -webkit-radial-gradient(white, black);*/
 }
 
 .bread-bottom {
@@ -16,6 +19,7 @@
   box-shadow: inset -45px 0 #EA5B42;
   height: 13%;
   margin: 0 auto;
+  overflow: hidden;
   width: 75%;
 }
 

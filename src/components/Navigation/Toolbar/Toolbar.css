@@ -1,10 +1,10 @@
 .toolbar {
   align-items: center;
-  background-color: #703b09;
+  background-color: #7d381a;
   box-sizing: border-box;
   color: #ccc;
   display: flex;
-  height: 56px;
+  height: 60px;
   justify-content: space-between;
   left: 0;
   padding: 0 20px;

@@ -1,5 +1,4 @@
 .navigation-item {
-  align-items: center;
   box-sizing: border-box;
   display: block;
   margin: 10px 0;
@@ -8,7 +7,7 @@
 
 .navigation-item a {
   box-sizing: border-box;
-  color: #8f5c2c;
+  color: #7d381a;
   display: block;
   padding: 16px 10px;
   text-decoration: none;
@@ -30,10 +29,13 @@
   }
 
   .navigation-item a {
+    align-items: center;
     border-bottom: 4px solid transparent;
     color: #fff;
+    display: flex;
     height: 100%;
-    min-width: 130px;
+    justify-content: center;
+    min-width: 162px;
     padding: 16px 10px;
     text-align: center;
   }
@@ -41,8 +43,8 @@
   .navigation-item a:hover,
   .navigation-item a:active,
   .navigation-item a.active {
-    background-color: #8f5c2c;
-    border-bottom: 4px solid #40a4c8;
+    background-color: #a8641ea6;
+    border-bottom: 4px solid #33d9b2;
     color: #fff;
   }
 }
