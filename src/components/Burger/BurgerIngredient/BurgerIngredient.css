@@ -1,112 +1,118 @@
-.BreadBottom {
-  background: linear-gradient(#F08E4A, #e27b36);
-  border-radius: 0 0 30px 30px;
-  box-shadow: inset -15px 0 #c15711;
+.bread-top {
+  background: #fb9354;
+  border-radius: 120px 120px 5px 5px;
+  border: 10px solid #373737;
+  box-shadow: inset -45px 0 #EA5B42;
+  height: 30%;
+  margin: 0 auto;
+  position: relative;
+  width: 75%;
+}
+
+.bread-bottom {
+  background: #fb9354;
+  border-radius: 5px 5px 50px 50px;
+  border: 10px solid #373737;
+  box-shadow: inset -45px 0 #EA5B42;
   height: 13%;
-  margin: 2% auto;
+  margin: 0 auto;
+  width: 75%;
+}
+
+.seed {
+  background-color: #373737;
+  border-radius: 100%;
+  height: 15px;
+  left: 14%;
+  position: absolute;
+  top: 30%;
+  width: 15px;
+}
+
+.seed:nth-child(2) {
+  left: 45%;
+  top: 10%;
+}
+
+.seed:nth-child(3) {
+  left: 10%;
+  top: 70%;
+}
+
+.seed:nth-child(4) {
+  left: 27%;
+  top: 52%;
+}
+
+.seed:nth-child(5) {
+  left: 70%;
+  top: 17%;
+}
+
+.seed:nth-child(6) {
+  left: 45%;
+  top: 80%;
+}
+
+.seed:nth-child(7) {
+  left: 82%;
+  top: 65%;
+}
+
+.seed:nth-child(8) {
+  left: 60%;
+  top: 59%;
+}
+
+.meat {
+  background: #852505;
+  border-radius: 30px;
+  border: 7px solid #373737;
+  box-shadow: inset -47px 0 #722207;
+  height: 7%;
+  margin: 0 auto;
   width: 80%;
 }
 
-.BreadTop {
-  background: linear-gradient(#bc581e, #e27b36);
-  border-radius: 50% 50% 0 0;
-  box-shadow: inset -15px 0 #c15711;
-  height: 20%;
-  margin: 2% auto;
+.cheese {
+  background: #fcd816;
+  border-radius: 20px;
+  border: 7px solid #373737;
+  box-shadow: inset -57px 0 #d1b311;
+  height: 5%;
+  margin: 0 auto;
+  width: 85%;
+}
+
+.salad {
+  background: #41B24C;
+  border-radius: 20px;
+  border: 7px solid #373737;
+  box-shadow: inset -70px 0 #399943;
+  height: 5%;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.bacon {
+  background: linear-gradient(#bf3813, #c45e38);
+  border-radius: 13px;
+  border: 7px solid #373737;
+  box-shadow: inset -48px 0 #ad3615;
+  height: 3%;
+  margin: 0 auto;
   position: relative;
   width: 80%;
 }
 
-.Seeds1 {
-  background-color: white;
-  border-radius: 40%;
-  box-shadow: inset -2px -3px #c9c9c9;
+.bacon:before {
+  background-color: #eee;
+  box-shadow: inset -48px 0 #ccc;
+  content: '';
   height: 15%;
-  left: 30%;
+  left: 0;
   position: absolute;
   top: 50%;
-  transform: rotate(-20deg);
-  width: 10%;
-}
-
-.Seeds1:after {
-  background-color: white;
-  border-radius: 40%;
-  box-shadow: inset -1px 2px #c9c9c9;
-  content: "";
-  height: 100%;
-  left: -170%;
-  position: absolute;
-  top: -260%;
-  transform: rotate(60deg);
+  transform: translateY(-50%);
   width: 100%;
-}
-
-.Seeds1:before {
-  background-color: white;
-  border-radius: 40%;
-  box-shadow: inset -1px -3px #c9c9c9;
-  content: "";
-  height: 100%;
-  left: 180%;
-  position: absolute;
-  top: -50%;
-  transform: rotate(60deg);
-  width: 100%;
-}
-
-.Seeds2 {
-  background-color: white;
-  border-radius: 40%;
-  box-shadow: inset -3px 0 #c9c9c9;
-  height: 15%;
-  left: 64%;
-  position: absolute;
-  top: 50%;
-  transform: rotate(10deg);
-  width: 10%;
-}
-
-.Seeds2:before {
-  background-color: white;
-  border-radius: 40%;
-  box-shadow: inset 1px 3px #c9c9c9;
-  content: "";
-  height: 100%;
-  left: 150%;
-  position: absolute;
-  top: -130%;
-  transform: rotate(90deg);
-  width: 100%;
-}
-
-.Meat {
-  background: linear-gradient(#7f3608, #702e05);
-  border-radius: 15px;
-  height: 8%;
-  margin: 2% auto;
-  width: 80%;
-}
-
-.Cheese {
-  background: linear-gradient(#f4d004, #d6bb22);
-  border-radius: 20px;
-  height: 4.5%;
-  margin: 2% auto;
-  width: 80%;
-}
-
-.Salad {
-  background: linear-gradient(#228c1d, #91ce50);
-  border-radius: 20px;
-  height: 7%;
-  margin: 2% auto;
-  width: 80%;
-}
-
-.Bacon {
-  background: linear-gradient(#bf3813, #c45e38);
-  height: 3%;
-  margin: 2% auto;
-  width: 80%;
 }

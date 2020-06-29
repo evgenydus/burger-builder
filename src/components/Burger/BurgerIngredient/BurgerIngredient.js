@@ -8,31 +8,37 @@ const BurgerIngredient = ({ type }) => {
 
   switch (type) {
     case ('bread-bottom'):
-      ingredient = <div className="BreadBottom" />
+      ingredient = <div className="bread-bottom" />
       break
 
     case ('bread-top'):
       ingredient =
-        <div className="BreadTop">
-          <div className="Seeds1"/>
-          <div className="Seeds2"/>
+        <div className="bread-top">
+          <div className="seed"/>
+          <div className="seed"/>
+          <div className="seed"/>
+          <div className="seed"/>
+          <div className="seed"/>
+          <div className="seed"/>
+          <div className="seed"/>
+          <div className="seed"/>
         </div>
       break
 
     case ('meat'):
-      ingredient = <div className="Meat" />
+      ingredient = <div className="meat" />
       break
 
     case ('cheese'):
-      ingredient = <div className="Cheese" />
+      ingredient = <div className="cheese" />
       break
 
     case ('salad'):
-      ingredient = <div className="Salad" />
+      ingredient = <div className="salad" />
       break
 
     case ('bacon'):
-      ingredient = <div className="Bacon" />
+      ingredient = <div className="bacon" />
       break
 
     default:
