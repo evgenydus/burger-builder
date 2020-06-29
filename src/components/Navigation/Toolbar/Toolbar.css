@@ -1,6 +1,7 @@
 .toolbar {
   align-items: center;
   background-color: #7d381a;
+  box-shadow: -2px 2px 6px 0px #000;
   box-sizing: border-box;
   color: #ccc;
   display: flex;

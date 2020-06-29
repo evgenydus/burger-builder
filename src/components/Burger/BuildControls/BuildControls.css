@@ -14,12 +14,13 @@
 }
 
 .checkout-button {
+  border-radius: 15px;
   border: 1px solid #966909;
   box-shadow: 2px 2px 2px #966909;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.2em;
-  min-width: 165px;
+  min-width: 191px;
   outline: none;
   padding: 15px 30px;
 }
@@ -41,25 +42,29 @@
 }
 
 .clear-btn {
-  background-color: #f87373;
-  color: #eee;
+  background-color: #ff7877;
+  border: 2px solid #cd5252;
+  color: #a23e4e;
+  font-weight: 700;
   margin-right: 10px;
 }
 
 .clear-btn:hover, .clear-btn:active {
-  background-color: #fd3f3f;
-  border: 1px solid #966909;
+  background-color: #FE463C;
+  border: 2px solid #FE463C;
+  color: #661E29;
 }
 
 .order-btn {
-  background-color: #dad735;
-  color: #966909;
+  background-color: #73f863;
+  border: 2px solid #3cd541;
+  color: #661E29;
+  font-weight: 700;
 }
 
 .order-btn:hover, .order-btn:active {
-  background-color: #a0db41;
-  border: 1px solid #966909;
-  color: #966909;
+  background-color: #54ea07;
+  border: 2px solid #54ea07;
 }
 
 .checkout-button:disabled {
