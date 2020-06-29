@@ -1,29 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import './Modal.css'
 
 import Backdrop from '../Backdrop/Backdrop';
 
-class Modal extends Component {
+const Modal = ({ isVisible, children, modalClosed }) => {
 
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    return(
-      nextProps.isVisible !== this.props.isVisible || nextProps.children !== this.props.children
-    )
-  }
-
-  render() {
-    const { children, modalClosed, isVisible } = this.props
-
-    return (
-      <>
-        <Backdrop clicked={modalClosed} isVisible={isVisible}/>
-        <div className={`modal ${isVisible && 'visible'}`}>
-          {children}
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <Backdrop clicked={modalClosed} isVisible={isVisible} />
+      <div className={`modal ${isVisible && 'visible'}`}>
+        {children}
+      </div>
+    </>
+  )
 }
 
-export default Modal
+export default React.memo(
+  Modal,
+  (prevProps, nextProps) => (
+    nextProps.isVisible === prevProps.isVisible && nextProps.children === prevProps.children
+  )
+)
+
