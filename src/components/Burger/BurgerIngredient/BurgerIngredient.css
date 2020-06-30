@@ -3,11 +3,13 @@
   border-radius: 120px 120px 5px 5px;
   border: 10px solid #373737;
   box-shadow: inset -45px 0 #EA5B42;
-  height: 30%;
+  box-sizing: border-box;
+  height: 115px;
   margin: 0 auto;
+  max-width: 90%;
   overflow: hidden;
   position: relative;
-  width: 75%;
+  width: 290px;
   /*  TODO: fix mobile safari box-shadow*/
   /*  -webkit-mask-image: -webkit-radial-gradient(white, black);*/
 }
@@ -17,10 +19,12 @@
   border-radius: 5px 5px 50px 50px;
   border: 10px solid #373737;
   box-shadow: inset -45px 0 #EA5B42;
-  height: 13%;
+  box-sizing: border-box;
+  height: 57px;
   margin: 0 auto;
+  max-width: 90%;
   overflow: hidden;
-  width: 75%;
+  width: 290px;
 }
 
 .seed {
@@ -75,7 +79,8 @@
   box-shadow: inset -47px 0 #722207;
   height: 7%;
   margin: 0 auto;
-  width: 80%;
+  max-width: 90%;
+  width: 290px;
 }
 
 .cheese {
@@ -85,7 +90,8 @@
   box-shadow: inset -57px 0 #d1b311;
   height: 5%;
   margin: 0 auto;
-  width: 85%;
+  max-width: 90%;
+  width: 310px;
 }
 
 .salad {
@@ -95,7 +101,8 @@
   box-shadow: inset -70px 0 #399943;
   height: 5%;
   margin: 0 auto;
-  width: 90%;
+  max-width: 90%;
+  width: 320px;
 }
 
 .bacon {
@@ -105,8 +112,9 @@
   box-shadow: inset -48px 0 #ad3615;
   height: 3%;
   margin: 0 auto;
+  max-width: 90%;
   position: relative;
-  width: 80%;
+  width: 290px;
 }
 
 .bacon:before {
@@ -119,4 +127,31 @@
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
+}
+
+@media (min-width: 501px) {
+  .bread-top {
+    width: 320px;
+  }
+
+  .bread-bottom {
+    width: 320px;
+  }
+
+  .salad{
+    width: 370px;
+  }
+
+  .bacon {
+    width: 320px;
+  }
+
+  .cheese {
+    width: 350px
+  }
+
+  .meat {
+    width:320px;
+  }
+
 }
