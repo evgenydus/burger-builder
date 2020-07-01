@@ -8,10 +8,10 @@ export const INGREDIENT_PRICES = {
 }
 
 export const EMPTY_BURGER = {
+  salad: 0,
   bacon: 0,
   cheese: 0,
   meat: 0,
-  salad: 0,
 }
 
 export const authEndpoints = {
@@ -20,3 +20,5 @@ export const authEndpoints = {
 }
 
 export const firebaseApiKey = 'AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw'
+
+export const ingredientsUrl = 'https://burger-builder-4a7da.firebaseio.com/ingredients.json'

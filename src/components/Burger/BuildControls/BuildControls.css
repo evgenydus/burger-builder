@@ -1,27 +1,38 @@
 .build-controls {
   align-items: center;
-  background-color: #cf8f2e;
+  background-color: #ffb142;
   box-shadow: 0 2px 1px #ccc;
   display: flex;
   flex-flow: column;
-  margin: auto;
-  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 25px;
+  padding: 30px 0;
   width: 100%;
 }
 
+.price {
+  font-size: 20px;
+  margin-bottom: 25px;
+  margin-top: 20px;
+}
+
 .checkout {
-  margin-top: 15px;
+  max-width: 76%;
+  text-align: center;
 }
 
 .checkout-button {
+  border-radius: 15px;
   border: 1px solid #966909;
   box-shadow: 2px 2px 2px #966909;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 1.2em;
-  min-width: 165px;
+  font-family: "Graduate", "Quicksand", sans-serif;
+  font-size: 16px;
+  min-width: 185px;
   outline: none;
-  padding: 15px 30px;
+  padding: 13px 20px;
+  text-transform: uppercase;
 }
 
 .checkout-button:not(:disabled) {
@@ -41,25 +52,29 @@
 }
 
 .clear-btn {
-  background-color: #f87373;
-  color: #eee;
-  margin-right: 10px;
+  background-color: #ff7877;
+  border: 2px solid #cd5252;
+  color: #a23e4e;
+  font-weight: 700;
 }
 
 .clear-btn:hover, .clear-btn:active {
-  background-color: #fd3f3f;
-  border: 1px solid #966909;
+  background-color: #FE463C;
+  border: 2px solid #FE463C;
+  color: #661E29;
 }
 
 .order-btn {
-  background-color: #dad735;
-  color: #966909;
+  background-color: #73f863;
+  border: 2px solid #3cd541;
+  color: #661E29;
+  font-weight: 700;
+  margin-top: 15px;
 }
 
 .order-btn:hover, .order-btn:active {
-  background-color: #a0db41;
-  border: 1px solid #966909;
-  color: #966909;
+  background-color: #54ea07;
+  border: 2px solid #54ea07;
 }
 
 .checkout-button:disabled {
@@ -67,4 +82,11 @@
   border: 1px solid #ccc;
   color: #888;
   cursor: not-allowed;
+}
+
+@media (min-width: 500px) {
+  .order-btn {
+    margin-left: 10px;
+    margin-top: 0;
+  }
 }
