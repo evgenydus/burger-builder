@@ -23,13 +23,14 @@ const Layout = ({ children, isAuthenticated }) => {
         drawerToggleClicked={showSideDrawerToggleHandler}
         isAuth={isAuthenticated}
       />
-      <SideDrawer
-        closed={sideDrawerClosedHandler}
-        isAuth={isAuthenticated}
-        open={sideDrawerIsVisible}
-      />
+      {/*<SideDrawer*/}
+      {/*  closed={sideDrawerClosedHandler}*/}
+      {/*  isAuth={isAuthenticated}*/}
+      {/*  open={sideDrawerIsVisible}*/}
+      {/*/>*/}
       <main className="content">
-        {children}
+        {/*{children}*/}
+        <div className="under-construction"> Sorry, the page is under construction</div>
       </main>
     </>
   )
