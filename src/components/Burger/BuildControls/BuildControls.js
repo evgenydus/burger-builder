@@ -13,10 +13,9 @@ const controls = [
 
 const BuildControls = ({
   clear,
-  disabled,
   ingredientAdded,
   ingredientRemoved,
-  ingredients,
+  ings,
   isAuth,
   isPurchasable,
   price,
@@ -27,15 +26,29 @@ const BuildControls = ({
   const orderBtnText = isAuth ? 'Order now!' : `Sign up to order`
 
   controls.forEach(ing => {
-    ing.quantity = ingredients[ing.type]
+    ing.quantity = ings[ing.type]
   })
+
+  const disabledInfo = {
+    less: { ...ings },
+    more: { ...ings },
+  }
+
+  for (let key in disabledInfo.less) {
+    disabledInfo.less[key] = disabledInfo.less[key] <= 0
+  }
+
+  for (let key in disabledInfo.more) {
+    disabledInfo.more[key] = disabledInfo.more[key] >= 3
+  }
 
   return (
     <div className='build-controls'>
       {controls.map(({ label, type, quantity }) => (
         <BuildControl
           added={() => ingredientAdded(type)}
-          disabled={disabled[type]}
+          disabledLess={disabledInfo.less[type]}
+          disabledMore={disabledInfo.more[type]}
           key={label}
           label={label}
           removed={() => ingredientRemoved(type)}
