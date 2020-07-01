@@ -17,10 +17,10 @@ export const removeIngredient = name => {
   }
 }
 
-export const clearBurger = () => {
+export const resetBurger = () => {
 
   return {
-    type: actionTypes.CLEAR_BURGER
+    type: actionTypes.RESET_BURGER
   }
 }
 

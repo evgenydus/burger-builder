@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import axios from '../../../axios-orders'
 import { connect } from 'react-redux'
-import * as orderActions from '../../../store/actions/index';
 
 import './ContactData.css'
 
+import * as actions from '../../../store/actions/index';
 import Button from '../../../components/UI/Button/Button';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -16,6 +16,7 @@ const ContactData = ({
   ings,
   isLoading,
   onOrderBurger,
+  onResetBurger,
   price,
   token,
   userId,
@@ -39,6 +40,7 @@ const ContactData = ({
     }
 
     onOrderBurger(order, token)
+    onResetBurger()
   }
 
   const inputChangedHandler = (event, inputIdentifier) => {
@@ -119,7 +121,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderBurger: (orderData, token) => dispatch(orderActions.purchaseBurger(orderData, token))
+    onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token)),
+    onResetBurger: () => dispatch(actions.resetBurger()),
   }
 }
 

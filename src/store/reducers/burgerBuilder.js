@@ -47,8 +47,13 @@ const setIngredients = (state, action) => {
   })
 }
 
-const clearBurger = (state) => {
-  return updateObject(state, { ingredients: EMPTY_BURGER, isError: false, totalPrice: BREAD_PRICE })
+const resetBurger = (state) => {
+  return updateObject(state, {
+    ingredients: EMPTY_BURGER,
+    isError: false,
+    totalPrice: BREAD_PRICE,
+    isBuilding: false,
+  })
 }
 
 const fetchIngredientsFailed = (state) => {
@@ -63,8 +68,8 @@ const burgerBuilder = (state = initialState, action) => {
     case actionTypes.REMOVE_INGREDIENT:
       return removeIngredient(state, action)
 
-    case actionTypes.CLEAR_BURGER:
-      return clearBurger(state)
+    case actionTypes.RESET_BURGER:
+      return resetBurger(state)
 
     case actionTypes.SET_INGREDIENTS:
       return setIngredients(state, action)
