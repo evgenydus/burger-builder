@@ -1,0 +1,16 @@
+.order-confirmed .card {
+  border-radius: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+.done-title {
+  font-family: "Graduate", sans-serif;
+  font-size: 35px;
+  text-transform: uppercase;
+}
+
+.done-text {
+  font-size: 25px;
+  font-weight: 500;
+}

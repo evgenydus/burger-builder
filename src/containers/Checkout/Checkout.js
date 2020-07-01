@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
+import OrderConfirmed from './OrderConfirmed/OrderConfirmed';
 
 const Checkout = ({ history, ings, isPurchased, match }) => {
   const checkoutCancelledHandler = () => {
@@ -14,10 +15,10 @@ const Checkout = ({ history, ings, isPurchased, match }) => {
     history.replace('/checkout/contact-data')
   }
 
-  let summary = <Redirect to="/" />
+  let summary = <Redirect to="/done" />
 
   if (ings) {
-    const purchasedRedirect = isPurchased ? <Redirect to="/" /> : null
+    const purchasedRedirect = isPurchased && <Redirect to="/done" />
     summary = (
       <div>
         {purchasedRedirect}
@@ -30,6 +31,7 @@ const Checkout = ({ history, ings, isPurchased, match }) => {
           path={`${match.path}/contact-data`}
           component={ContactData}
         />
+        <Route path={`/done`} render={<OrderConfirmed ingredients={ings} />} />
       </div>
     )
   }

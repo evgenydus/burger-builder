@@ -6,6 +6,7 @@ import './ContactData.css'
 
 import * as actions from '../../../store/actions/index';
 import Button from '../../../components/UI/Button/Button';
+import Card from '../../../components/UI/Card/Card';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../../components/hoc/withErrorHandler/withErrorHandler';
@@ -13,6 +14,7 @@ import { checkValidity, updateObject } from '../../../shared/utility';
 import { initialOrderForm } from './initialState'
 
 const ContactData = ({
+  history,
   ings,
   isLoading,
   onOrderBurger,
@@ -39,8 +41,10 @@ const ContactData = ({
       userId,
     }
 
-    onOrderBurger(order, token)
-    onResetBurger()
+    history.replace('/done')
+
+    // onOrderBurger(order, token)
+    // onResetBurger()
   }
 
   const inputChangedHandler = (event, inputIdentifier) => {
@@ -103,8 +107,10 @@ const ContactData = ({
 
   return (
     <div className="contact-data">
-      <h4>Enter your Contact Data</h4>
-      {form}
+      <Card>
+        <h3>Enter your Contact Data</h3>
+        {form}
+      </Card>
     </div>
   )
 }
