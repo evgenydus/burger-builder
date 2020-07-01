@@ -8,11 +8,11 @@ import NavigationItems from '../NavigationItems/NavigationItems'
 
 const Toolbar = ({ drawerToggleClicked, isAuth }) => (
   <header className="toolbar">
-    <DrawerToggle clicked={drawerToggleClicked} />
+    {/*<DrawerToggle clicked={drawerToggleClicked} />*/}
     <Logo />
-    <nav className="nav desktop-only">
-      <NavigationItems isAuth={isAuth} />
-    </nav>
+    {/*<nav className="nav desktop-only">*/}
+    {/*  <NavigationItems isAuth={isAuth} />*/}
+    {/*</nav>*/}
   </header>
 )
 
