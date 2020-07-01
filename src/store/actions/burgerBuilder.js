@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actionTypes'
-import axios from '../../axios-orders'
 
 export const addIngredient = name => {
 
@@ -17,10 +16,10 @@ export const removeIngredient = name => {
   }
 }
 
-export const resetBurger = () => {
+export const clearBurger = () => {
 
   return {
-    type: actionTypes.RESET_BURGER
+    type: actionTypes.CLEAR_BURGER
   }
 }
 
@@ -45,7 +44,7 @@ export const initIngredients = () => {
       .then(response => {
         dispatch(setIngredients(response.data))
       })
-      .catch(() => {
+      .catch(error => {
         dispatch(fetchIngredientsFailed())
       })
   }
