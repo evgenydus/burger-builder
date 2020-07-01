@@ -2,7 +2,7 @@ import React from 'react';
 
 import './BuildControl.css'
 
-const BuildControl = ({ added, disabled, label, removed }) => {
+const BuildControl = ({ added, disabled, label, removed, quantity }) => {
 
   return (
     <div className="build-control">
@@ -14,6 +14,7 @@ const BuildControl = ({ added, disabled, label, removed }) => {
       >
         Less
       </button>
+      <span className="quantity">{quantity}</span>
       <button
         className="control-btn more"
         onClick={added}

@@ -79,6 +79,7 @@ export const BurgerBuilder = ({
           disabled={disabledInfo}
           ingredientAdded={onIngredientAdded}
           ingredientRemoved={onIngredientRemoved}
+          ingredients={ings}
           isAuth={isAuthenticated}
           isPurchasable={!updatePurchaseState(ings)}
           price={price}

@@ -5,10 +5,10 @@ import './BuildControls.css'
 import BuildControl from './BuildControl/BuildControl';
 
 const controls = [
-  { label: 'Salad', type: 'salad' },
-  { label: 'Bacon', type: 'bacon' },
-  { label: 'Cheese', type: 'cheese' },
-  { label: 'Meat', type: 'meat' },
+  { label: 'Salad', type: 'salad', quantity: 0 },
+  { label: 'Bacon', type: 'bacon', quantity: 0 },
+  { label: 'Cheese', type: 'cheese', quantity: 0 },
+  { label: 'Meat', type: 'meat', quantity: 0 },
 ]
 
 const BuildControls = ({
@@ -16,6 +16,7 @@ const BuildControls = ({
   disabled,
   ingredientAdded,
   ingredientRemoved,
+  ingredients,
   isAuth,
   isPurchasable,
   price,
@@ -25,15 +26,20 @@ const BuildControls = ({
 
   const orderBtnText = isAuth ? 'Order now!' : `Sign up to order`
 
+  controls.forEach(ing => {
+    ing.quantity = ingredients[ing.type]
+  })
+
   return (
     <div className='build-controls'>
-      {controls.map(({ label, type }) => (
+      {controls.map(({ label, type, quantity }) => (
         <BuildControl
           added={() => ingredientAdded(type)}
           disabled={disabled[type]}
           key={label}
           label={label}
           removed={() => ingredientRemoved(type)}
+          quantity={quantity}
         />
       ))}
       <p className="price">Current price:{' '}
