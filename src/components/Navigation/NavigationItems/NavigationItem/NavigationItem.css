@@ -1,12 +1,10 @@
 .navigation-item {
-  box-sizing: border-box;
   display: block;
   margin: 10px 0;
   width: 100%;
 }
 
 .navigation-item a {
-  box-sizing: border-box;
   color: #7d381a;
   display: block;
   padding: 16px 10px;
@@ -30,9 +28,8 @@
 
   .navigation-item a {
     align-items: center;
-    border-bottom: 4px solid transparent;
-    color: #fff;
     display: flex;
+    font-weight: 600;
     height: 100%;
     justify-content: center;
     min-width: 162px;
@@ -43,8 +40,8 @@
   .navigation-item a:hover,
   .navigation-item a:active,
   .navigation-item a.active {
-    background-color: #a8641ea6;
-    border-bottom: 4px solid #33d9b2;
+    background-color: rgba(168, 100, 30, .5);
+    box-shadow: inset 0 -4px 0 0 #5FA036;
     color: #fff;
   }
 }

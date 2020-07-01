@@ -27,9 +27,6 @@ const BuildControls = ({
 
   return (
     <div className='build-controls'>
-      <p>Current price:{' '}
-        <strong>${currentPrice}</strong>
-      </p>
       {controls.map(({ label, type }) => (
         <BuildControl
           added={() => ingredientAdded(type)}
@@ -38,23 +35,26 @@ const BuildControls = ({
           label={label}
           removed={() => ingredientRemoved(type)}
         />
-        ))}
-        <div className="checkout">
-          <button
-            className="checkout-button clear-btn"
-            disabled={isPurchasable}
-            onClick={clear}
-          >
-            Clear all
-          </button>
-          <button
-            className="checkout-button order-btn"
-            disabled={isPurchasable}
-            onClick={purchase}
-          >
-            {orderBtnText}
-          </button>
-        </div>
+      ))}
+      <p className="price">Current price:{' '}
+        <strong>${currentPrice}</strong>
+      </p>
+      <div className="checkout">
+        <button
+          className="checkout-button clear-btn"
+          disabled={isPurchasable}
+          onClick={clear}
+        >
+          Clear all
+        </button>
+        <button
+          className="checkout-button order-btn"
+          disabled={isPurchasable}
+          onClick={purchase}
+        >
+          {orderBtnText}
+        </button>
+      </div>
     </div>
   )
 }

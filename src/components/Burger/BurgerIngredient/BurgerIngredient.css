@@ -3,7 +3,6 @@
   border-radius: 120px 120px 5px 5px;
   border: 10px solid #373737;
   box-shadow: inset -45px 0 #EA5B42;
-  box-sizing: border-box;
   height: 115px;
   margin: 0 auto;
   max-width: 90%;
@@ -19,7 +18,6 @@
   border-radius: 5px 5px 50px 50px;
   border: 10px solid #373737;
   box-shadow: inset -45px 0 #EA5B42;
-  box-sizing: border-box;
   height: 57px;
   margin: 0 auto;
   max-width: 90%;
@@ -72,34 +70,12 @@
   top: 59%;
 }
 
-.meat {
-  background: #852505;
-  border-radius: 30px;
-  border: 7px solid #373737;
-  box-shadow: inset -47px 0 #722207;
-  height: 7%;
-  margin: 0 auto;
-  max-width: 90%;
-  width: 290px;
-}
-
-.cheese {
-  background: #fcd816;
-  border-radius: 20px;
-  border: 7px solid #373737;
-  box-shadow: inset -57px 0 #d1b311;
-  height: 5%;
-  margin: 0 auto;
-  max-width: 90%;
-  width: 310px;
-}
-
 .salad {
   background: #41B24C;
   border-radius: 20px;
   border: 7px solid #373737;
   box-shadow: inset -70px 0 #399943;
-  height: 5%;
+  height: 27px;
   margin: 0 auto;
   max-width: 90%;
   width: 320px;
@@ -110,10 +86,32 @@
   border-radius: 13px;
   border: 7px solid #373737;
   box-shadow: inset -48px 0 #ad3615;
-  height: 3%;
+  height: 23px;
   margin: 0 auto;
   max-width: 90%;
   position: relative;
+  width: 290px;
+}
+
+.cheese {
+  background: #fcd816;
+  border-radius: 20px;
+  border: 7px solid #373737;
+  box-shadow: inset -57px 0 #d1b311;
+  height: 27px;
+  margin: 0 auto;
+  max-width: 90%;
+  width: 310px;
+}
+
+.meat {
+  background: #852505;
+  border-radius: 30px;
+  border: 7px solid #373737;
+  box-shadow: inset -47px 0 #722207;
+  height: 36px;
+  margin: 0 auto;
+  max-width: 90%;
   width: 290px;
 }
 
@@ -138,7 +136,7 @@
     width: 320px;
   }
 
-  .salad{
+  .salad {
     width: 370px;
   }
 
@@ -151,7 +149,7 @@
   }
 
   .meat {
-    width:320px;
+    width: 320px;
   }
 
 }
