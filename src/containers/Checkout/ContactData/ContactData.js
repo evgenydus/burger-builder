@@ -18,7 +18,6 @@ const ContactData = ({
   ings,
   isLoading,
   onOrderBurger,
-  onResetBurger,
   price,
   token,
   userId,
@@ -41,10 +40,8 @@ const ContactData = ({
       userId,
     }
 
-    history.replace('/done')
-
-    // onOrderBurger(order, token)
-    // onResetBurger()
+    history.replace('/checkout/done')
+    onOrderBurger(order, token)
   }
 
   const inputChangedHandler = (event, inputIdentifier) => {
@@ -128,7 +125,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token)),
-    onResetBurger: () => dispatch(actions.resetBurger()),
   }
 }
 

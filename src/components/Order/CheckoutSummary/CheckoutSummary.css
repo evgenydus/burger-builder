@@ -8,3 +8,10 @@
   margin: auto;
   width: 100%;
 }
+
+.checkout-title {
+  font-family: "Graduate", sans-serif;
+  font-size: 30px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
