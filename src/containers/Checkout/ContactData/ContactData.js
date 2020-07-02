@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 
 import './ContactData.css'
 
-import * as actions from '../../../store/actions/index';
-import Button from '../../../components/UI/Button/Button';
-import Card from '../../../components/UI/Card/Card';
-import Input from '../../../components/UI/Input/Input';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import withErrorHandler from '../../../components/hoc/withErrorHandler/withErrorHandler';
-import { checkValidity, updateObject } from '../../../shared/utility';
+import * as actions from '../../../store/actions/index'
+import Button from '../../../components/UI/Button/Button'
+import Card from '../../../components/UI/Card/Card'
+import Input from '../../../components/UI/Input/Input'
+import Spinner from '../../../components/UI/Spinner/Spinner'
+import withErrorHandler from '../../../components/hoc/withErrorHandler/withErrorHandler'
+import { checkValidity, updateObject } from '../../../shared/utility'
 import { initialOrderForm } from './initialState'
 
 const ContactData = ({
@@ -22,8 +22,8 @@ const ContactData = ({
   token,
   userId,
 }) => {
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [orderForm, setOrderForm] = useState(initialOrderForm);
+  const [isFormValid, setIsFormValid] = useState(false)
+  const [orderForm, setOrderForm] = useState(initialOrderForm)
 
   const orderHandler = (event) => {
     event.preventDefault()
@@ -47,7 +47,10 @@ const ContactData = ({
   const inputChangedHandler = (event, inputIdentifier) => {
     const updatedFormElement = updateObject(orderForm[inputIdentifier], {
       value: event.target.value,
-      isValid: checkValidity(event.target.value, orderForm[inputIdentifier].validation),
+      isValid: checkValidity(
+        event.target.value,
+        orderForm[inputIdentifier].validation
+      ),
       isTouched: true,
     })
 
@@ -75,19 +78,18 @@ const ContactData = ({
 
   let form = (
     <form onSubmit={orderHandler}>
-      {formElementsArray.map(formElement => (
-          <Input
-            changed={(event) => inputChangedHandler(event, formElement.id)}
-            elementConfig={formElement.config.elementConfig}
-            elementType={formElement.config.elementType}
-            invalid={!formElement.config.isValid}
-            isTouched={formElement.config.isTouched}
-            key={formElement.id}
-            shouldValidate={formElement.config.validation}
-            value={formElement.config.value}
-          />
-        )
-      )}
+      {formElementsArray.map((formElement) => (
+        <Input
+          changed={(event) => inputChangedHandler(event, formElement.id)}
+          elementConfig={formElement.config.elementConfig}
+          elementType={formElement.config.elementType}
+          invalid={!formElement.config.isValid}
+          isTouched={formElement.config.isTouched}
+          key={formElement.id}
+          shouldValidate={formElement.config.validation}
+          value={formElement.config.value}
+        />
+      ))}
       <Button
         btnType={['success']}
         clicked={orderHandler}
@@ -112,7 +114,7 @@ const ContactData = ({
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
@@ -122,10 +124,14 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token)),
+    onOrderBurger: (orderData, token) =>
+      dispatch(actions.purchaseBurger(orderData, token)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(ContactData, axios))

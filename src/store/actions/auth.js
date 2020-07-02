@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 import * as actionTypes from './actionTypes'
-import { firebaseApiKey, authEndpoints } from '../../appData/appData';
-import { resetBurger } from './burgerBuilder';
+import { firebaseApiKey, authEndpoints } from '../../appData/appData'
+import { resetBurger } from './burgerBuilder'
 
 export const authStart = () => {
   return {
@@ -11,7 +11,6 @@ export const authStart = () => {
 }
 
 export const authSuccess = (idToken, userId) => {
-
   return {
     type: actionTypes.AUTH_SUCCESS,
     idToken,
@@ -19,7 +18,7 @@ export const authSuccess = (idToken, userId) => {
   }
 }
 
-export const authFail = error => {
+export const authFail = (error) => {
   return {
     type: actionTypes.AUTH_FAIL,
     error,
@@ -35,7 +34,7 @@ export const logout = () => {
 }
 
 export const closeSession = () => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(logout())
     dispatch(resetBurger())
   }
@@ -44,7 +43,7 @@ export const closeSession = () => {
 export const checkAuthTimeout = (expiresIn) => {
   const expirationTime = expiresIn * 1000
 
-  return dispatch => {
+  return (dispatch) => {
     setTimeout(() => {
       dispatch(closeSession())
     }, expirationTime)
@@ -52,7 +51,7 @@ export const checkAuthTimeout = (expiresIn) => {
 }
 
 export const auth = (email, password, isSignUp) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(authStart())
     const authData = {
       email,
@@ -63,8 +62,9 @@ export const auth = (email, password, isSignUp) => {
     const { signUp, signIn } = authEndpoints
     const endpoint = isSignUp ? signUp : signIn
 
-    axios.post(`${endpoint}${firebaseApiKey}`, authData)
-      .then(response => {
+    axios
+      .post(`${endpoint}${firebaseApiKey}`, authData)
+      .then((response) => {
         const { idToken, localId, expiresIn } = response.data
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000)
 
@@ -74,7 +74,7 @@ export const auth = (email, password, isSignUp) => {
         dispatch(authSuccess(idToken, localId))
         dispatch(checkAuthTimeout(expiresIn))
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(authFail(err.response.data.error))
       })
   }
@@ -88,7 +88,7 @@ export const setAuthRedirectPath = (path) => {
 }
 
 export const authCheckState = () => {
-  return dispatch => {
+  return (dispatch) => {
     const token = localStorage.getItem('token')
 
     if (!token) {
@@ -100,7 +100,8 @@ export const authCheckState = () => {
         dispatch(closeSession())
       } else {
         const userId = localStorage.getItem('userId')
-        const authTimeout = (expirationDate.getTime() - new Date().getTime()) / 1000
+        const authTimeout =
+          (expirationDate.getTime() - new Date().getTime()) / 1000
 
         dispatch(authSuccess(token, userId))
         dispatch(checkAuthTimeout(authTimeout))

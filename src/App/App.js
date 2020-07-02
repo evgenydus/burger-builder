@@ -1,14 +1,14 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect, Suspense } from 'react'
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions'
 
-import './App.css';
+import './App.css'
 
-import BurgerBuilder from '../containers/BurgerBuilder/BurgerBuilder';
-import Layout from '../components/hoc/Layout/Layout';
-import Logout from '../containers/Auth/Logout/Logout';
-import Spinner from '../components/UI/Spinner/Spinner';
+import BurgerBuilder from '../containers/BurgerBuilder/BurgerBuilder'
+import Layout from '../components/hoc/Layout/Layout'
+import Logout from '../containers/Auth/Logout/Logout'
+import Spinner from '../components/UI/Spinner/Spinner'
 
 const Checkout = React.lazy(() => {
   return import('../containers/Checkout/Checkout')
@@ -53,24 +53,22 @@ const App = (props) => {
   return (
     <div>
       <Layout>
-        <Suspense fallback={<Spinner />}>
-          {routes}
-        </Suspense>
+        <Suspense fallback={<Spinner />}>{routes}</Suspense>
       </Layout>
     </div>
-  );
+  )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onTryAutoSignUp: () => dispatch(actions.authCheckState())
+    onTryAutoSignUp: () => dispatch(actions.authCheckState()),
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

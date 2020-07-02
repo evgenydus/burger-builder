@@ -5,11 +5,7 @@ import './NavigationItem.css'
 
 const NavigationItem = ({ children, exact, link }) => (
   <li className="navigation-item">
-    <NavLink
-      activeClassName="active"
-      exact={exact}
-      to={link}
-    >
+    <NavLink activeClassName="active" exact={exact} to={link}>
       {children}
     </NavLink>
   </li>
