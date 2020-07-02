@@ -1,22 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import './CheckoutSummary.css'
 
 import Burger from '../../Burger/Burger';
 import Button from '../../UI/Button/Button';
 
-const CheckoutSummary = ({ checkoutCancelled, checkoutContinued, ingredients }) => {
+const CheckoutSummary = ({
+  checkoutCancelled,
+  checkoutContinued,
+  ingredients,
+  isLoading,
+  isPurchased,
+}) => {
 
   return (
     <div className="checkout-summary">
-      <h1>We hope it tastes well!</h1>
+      <h2 className="checkout-title">We hope it tastes well!</h2>
       <div className="checkout-burger">
-        <Burger ingredients={ingredients}/>
+        <Burger ingredients={ingredients} />
       </div>
-      <Button btnType={['danger']} clicked={checkoutCancelled}>Cancel</Button>
-      <Button btnType={['success']} clicked={checkoutContinued}>Continue</Button>
+      {!isPurchased && !isLoading && (
+        <>
+          <Button btnType={['danger']} clicked={checkoutCancelled}>Cancel</Button>
+          <Button btnType={['success']} clicked={checkoutContinued}>Continue</Button>
+        </>
+      )}
     </div>
   )
 }
 
-export default CheckoutSummary
+const mapStateToProps = state => {
+  return ({
+    isPurchased: state.order.isPurchased,
+    isLoading: state.order.isLoading,
+  })
+}
+
+export default connect(mapStateToProps)(CheckoutSummary)
