@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-import * as actions from '../../store/actions/index';
+import * as actions from '../../store/actions/index'
 import axios from '../../axios-orders'
-import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import Burger from '../../components/Burger/Burger';
-import Modal from '../../components/UI/Modal/Modal';
-import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler';
+import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import Burger from '../../components/Burger/Burger'
+import Modal from '../../components/UI/Modal/Modal'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+import Spinner from '../../components/UI/Spinner/Spinner'
+import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler'
 
 export const BurgerBuilder = ({
   history,
@@ -32,7 +32,7 @@ export const BurgerBuilder = ({
 
   const updatePurchaseState = (ingredients) => {
     const sum = Object.keys(ingredients)
-      .map(ingredientKey => {
+      .map((ingredientKey) => {
         return ingredients[ingredientKey]
       })
       .reduce((sum, el) => {
@@ -80,12 +80,14 @@ export const BurgerBuilder = ({
       </>
     )
 
-    orderSummary = <OrderSummary
-      ingredients={ings}
-      price={price}
-      purchaseCancelled={purchaseCancelHandler}
-      purchaseContinue={purchaseContinueHandler}
-    />
+    orderSummary = (
+      <OrderSummary
+        ingredients={ings}
+        price={price}
+        purchaseCancelled={purchaseCancelHandler}
+        purchaseContinue={purchaseContinueHandler}
+      />
+    )
   }
 
   return (
@@ -98,8 +100,7 @@ export const BurgerBuilder = ({
   )
 }
 
-const mapStateToProps = state => {
-
+const mapStateToProps = (state) => {
   return {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
@@ -109,16 +110,20 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-
+const mapDispatchToProps = (dispatch) => {
   return {
     onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
-    onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
+    onIngredientRemoved: (ingName) =>
+      dispatch(actions.removeIngredient(ingName)),
     onClearBurger: () => dispatch(actions.resetBurger()),
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onInitPurchase: () => dispatch(actions.purchaseInit()),
-    onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+    onSetAuthRedirectPath: (path) =>
+      dispatch(actions.setAuthRedirectPath(path)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(BurgerBuilder, axios))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(BurgerBuilder, axios))

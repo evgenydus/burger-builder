@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 import './BuildControls.css'
 
-import BuildControl from './BuildControl/BuildControl';
+import BuildControl from './BuildControl/BuildControl'
 
 const controls = [
   { label: 'Salad', type: 'salad', quantity: 0 },
@@ -25,7 +25,7 @@ const BuildControls = ({
 
   const orderBtnText = isAuth ? 'Order now!' : `Sign up to order`
 
-  controls.forEach(ing => {
+  controls.forEach((ing) => {
     ing.quantity = ings[ing.type]
   })
 
@@ -43,7 +43,7 @@ const BuildControls = ({
   }
 
   return (
-    <div className='build-controls'>
+    <div className="build-controls">
       {controls.map(({ label, type, quantity }) => (
         <BuildControl
           added={() => ingredientAdded(type)}
@@ -55,8 +55,8 @@ const BuildControls = ({
           quantity={quantity}
         />
       ))}
-      <p className="price">Current price:{' '}
-        <strong>${currentPrice}</strong>
+      <p className="price">
+        Current price: <strong>${currentPrice}</strong>
       </p>
       <div className="checkout">
         <button

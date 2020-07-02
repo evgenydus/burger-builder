@@ -3,7 +3,7 @@ export const initialAuthForm = {
     elementType: 'input',
     elementConfig: {
       type: 'email',
-      placeholder: 'Your Email'
+      placeholder: 'Your Email',
     },
     value: '',
     validation: {
@@ -17,7 +17,7 @@ export const initialAuthForm = {
     elementType: 'input',
     elementConfig: {
       type: 'password',
-      placeholder: 'Password'
+      placeholder: 'Password',
     },
     value: '',
     validation: {

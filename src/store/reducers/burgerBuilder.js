@@ -1,5 +1,9 @@
 import * as actionTypes from '../actions/actionTypes'
-import { BREAD_PRICE, EMPTY_BURGER, INGREDIENT_PRICES } from '../../appData/appData';
+import {
+  BREAD_PRICE,
+  EMPTY_BURGER,
+  INGREDIENT_PRICES,
+} from '../../appData/appData'
 import { updateObject } from '../../shared/utility'
 
 const initialState = {
@@ -11,7 +15,7 @@ const initialState = {
 
 const addIngredient = (state, action) => {
   const updatedIngredient = {
-    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
+    [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
   }
   const updatedIngredients = updateObject(state.ingredients, updatedIngredient)
   const updatedState = {
@@ -25,7 +29,7 @@ const addIngredient = (state, action) => {
 
 const removeIngredient = (state, action) => {
   const updatedIngredient = {
-    [action.ingredientName]: state.ingredients[action.ingredientName] - 1
+    [action.ingredientName]: state.ingredients[action.ingredientName] - 1,
   }
   const updatedIngredients = updateObject(state.ingredients, updatedIngredient)
   const updatedState = {
@@ -48,7 +52,7 @@ const setIngredients = (state, action) => {
 }
 
 const resetBurger = (state) => {
-  return updateObject(state, initialState )
+  return updateObject(state, initialState)
 }
 
 const fetchIngredientsFailed = (state) => {

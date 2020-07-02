@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 import './Input.css'
 
-const Input = ({ 
+const Input = ({
   changed,
   elementConfig,
   elementType,
@@ -21,45 +21,44 @@ const Input = ({
   }
 
   switch (elementType) {
-    case ('input'):
-      inputElement= <input
-        className={inputClasses}
-        onChange={changed}
-        value={value}
-        {...elementConfig}
-      />
+    case 'input':
+      inputElement = (
+        <input
+          className={inputClasses}
+          onChange={changed}
+          value={value}
+          {...elementConfig}
+        />
+      )
       break
 
-    case ('textarea'):
-      inputElement = <textarea
-        className={inputClasses}
-        onChange={changed}
-        value={value}
-        {...elementConfig}
-      />
+    case 'textarea':
+      inputElement = (
+        <textarea
+          className={inputClasses}
+          onChange={changed}
+          value={value}
+          {...elementConfig}
+        />
+      )
       break
 
-    case ('select'):
-      inputElement = <select
-        className={inputClasses}
-        onChange={changed}
-        value={value}
-      >
-        {elementConfig.options.map(({ value, displayValue }) => (
-          <option key={value} value={value}>
-            {displayValue}
-          </option>
-          )
-        )}
-      </select>
+    case 'select':
+      inputElement = (
+        <select className={inputClasses} onChange={changed} value={value}>
+          {elementConfig.options.map(({ value, displayValue }) => (
+            <option key={value} value={value}>
+              {displayValue}
+            </option>
+          ))}
+        </select>
+      )
       break
 
     default:
-      inputElement = <input
-        className={inputClasses}
-        value={value}
-        {...elementConfig}
-      />
+      inputElement = (
+        <input className={inputClasses} value={value} {...elementConfig} />
+      )
   }
 
   return (
@@ -69,6 +68,5 @@ const Input = ({
     </div>
   )
 }
-
 
 export default Input

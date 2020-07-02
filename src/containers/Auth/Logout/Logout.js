@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -12,9 +12,9 @@ const Logout = ({ onCloseSession }) => {
   return <Redirect to="/" />
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onCloseSession: () => dispatch(actions.closeSession())
+    onCloseSession: () => dispatch(actions.closeSession()),
   }
 }
 

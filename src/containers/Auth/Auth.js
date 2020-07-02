@@ -5,10 +5,10 @@ import { Redirect } from 'react-router-dom'
 import './Auth.css'
 
 import * as actions from '../../store/actions/index'
-import Button from '../../components/UI/Button/Button';
-import Input from '../../components/UI/Input/Input';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import { checkValidity, updateObject } from '../../shared/utility';
+import Button from '../../components/UI/Button/Button'
+import Input from '../../components/UI/Input/Input'
+import Spinner from '../../components/UI/Spinner/Spinner'
+import { checkValidity, updateObject } from '../../shared/utility'
 import { initialAuthForm } from './initialState'
 
 const Auth = ({
@@ -20,8 +20,8 @@ const Auth = ({
   onAuth,
   onSetAuthRedirectPath,
 }) => {
-  const [authForm, setAuthForm] = useState(initialAuthForm);
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [authForm, setAuthForm] = useState(initialAuthForm)
+  const [isSignUp, setIsSignUp] = useState(false)
 
   useEffect(() => {
     if (!isBuildingBurger && authRedirectPath !== '/') {
@@ -33,9 +33,12 @@ const Auth = ({
     const updatedControls = updateObject(authForm, {
       [controlName]: updateObject(authForm[controlName], {
         value: event.target.value,
-        isValid: checkValidity(event.target.value, authForm[controlName].validation),
+        isValid: checkValidity(
+          event.target.value,
+          authForm[controlName].validation
+        ),
         isTouched: true,
-      })
+      }),
     })
 
     setAuthForm(updatedControls)
@@ -60,17 +63,19 @@ const Auth = ({
     })
   }
 
-  let form = formElementsArray.map(formElement => {
-    return (<Input
-      changed={(event) => inputChangedHandler(event, formElement.id)}
-      elementConfig={formElement.config.elementConfig}
-      elementType={formElement.config.elementType}
-      invalid={!formElement.config.isValid}
-      isTouched={formElement.config.isTouched}
-      key={formElement.id}
-      shouldValidate={formElement.config.validation}
-      value={formElement.config.value}
-    />)
+  let form = formElementsArray.map((formElement) => {
+    return (
+      <Input
+        changed={(event) => inputChangedHandler(event, formElement.id)}
+        elementConfig={formElement.config.elementConfig}
+        elementType={formElement.config.elementType}
+        invalid={!formElement.config.isValid}
+        isTouched={formElement.config.isTouched}
+        key={formElement.id}
+        shouldValidate={formElement.config.validation}
+        value={formElement.config.value}
+      />
+    )
   })
 
   if (isLoading) {
@@ -85,17 +90,14 @@ const Auth = ({
         {form}
         <Button btnType={['success']}>Submit</Button>
       </form>
-      <Button
-        btnType={['danger']}
-        clicked={switchAuthModeHandler}
-      >
+      <Button btnType={['danger']} clicked={switchAuthModeHandler}>
         Switch to {isSignUp ? 'sign in' : 'sign up'}
       </Button>
     </div>
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isLoading: state.auth.isLoading,
     error: state.auth.error,
@@ -105,10 +107,11 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
-    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+    onAuth: (email, password, isSignUp) =>
+      dispatch(actions.auth(email, password, isSignUp)),
+    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
   }
 }
 

@@ -3,7 +3,7 @@ export const initialOrderForm = {
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      placeholder: 'Your Name'
+      placeholder: 'Your Name',
     },
     value: '',
     validation: {
@@ -16,7 +16,7 @@ export const initialOrderForm = {
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      placeholder: 'Street'
+      placeholder: 'Street',
     },
     value: '',
     validation: {
@@ -29,7 +29,7 @@ export const initialOrderForm = {
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      placeholder: 'ZIP Code'
+      placeholder: 'ZIP Code',
     },
     value: '',
     validation: {
@@ -45,7 +45,7 @@ export const initialOrderForm = {
     elementType: 'input',
     elementConfig: {
       type: 'text',
-      placeholder: 'Country'
+      placeholder: 'Country',
     },
     value: '',
     validation: {
@@ -58,7 +58,7 @@ export const initialOrderForm = {
     elementType: 'input',
     elementConfig: {
       type: 'email',
-      placeholder: 'Your E-Mail'
+      placeholder: 'Your E-Mail',
     },
     value: '',
     validation: {
@@ -74,7 +74,7 @@ export const initialOrderForm = {
       options: [
         { value: 'fastest', displayValue: 'Fastest' },
         { value: 'cheapest', displayValue: 'Cheapest' },
-      ]
+      ],
     },
     value: 'fastest',
     validation: {},

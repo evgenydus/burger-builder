@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import './Layout.css'
 
-import SideDrawer from '../../Navigation/SideDrawer/SideDrawer';
-import Toolbar from '../../Navigation/Toolbar/Toolbar';
+import SideDrawer from '../../Navigation/SideDrawer/SideDrawer'
+import Toolbar from '../../Navigation/Toolbar/Toolbar'
 
 const Layout = ({ children, isAuthenticated }) => {
-  const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
+  const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false)
 
   const sideDrawerClosedHandler = () => {
     setSideDrawerIsVisible(false)
@@ -28,16 +28,14 @@ const Layout = ({ children, isAuthenticated }) => {
         isAuth={isAuthenticated}
         open={sideDrawerIsVisible}
       />
-      <main className="content">
-        {children}
-      </main>
+      <main className="content">{children}</main>
     </>
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
   }
 }
 

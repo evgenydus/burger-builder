@@ -3,13 +3,12 @@ import { connect } from 'react-redux'
 
 import './OrderComplete.css'
 
-import * as actions from '../../../store/actions';
-import Button from '../../../components/UI/Button/Button';
-import Card from '../../../components/UI/Card/Card';
-import Spinner from '../../../components/UI/Spinner/Spinner';
+import * as actions from '../../../store/actions'
+import Button from '../../../components/UI/Button/Button'
+import Card from '../../../components/UI/Card/Card'
+import Spinner from '../../../components/UI/Spinner/Spinner'
 
 const OrderComplete = ({ history, isLoading, onResetBurger }) => {
-
   const goToOrdersHandler = () => {
     history.replace('/orders')
     onResetBurger()
@@ -24,24 +23,26 @@ const OrderComplete = ({ history, isLoading, onResetBurger }) => {
     <Card>
       <h2 className="done-title">Thank you!</h2>
       <p className="done-text">You will get your burger soon</p>
-      <Button btnType={['danger']} clicked={goToOrdersHandler}>Orders</Button>
-      <Button btnType={['success']} clicked={orderMoreHandler}>Order one more!</Button>
+      <Button btnType={['danger']} clicked={goToOrdersHandler}>
+        Orders
+      </Button>
+      <Button btnType={['success']} clicked={orderMoreHandler}>
+        Order one more!
+      </Button>
     </Card>
   )
 
   return (
-    <div className="order-complete">
-      {isLoading ? <Spinner /> : cardRender}
-    </div>
+    <div className="order-complete">{isLoading ? <Spinner /> : cardRender}</div>
   )
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isLoading: state.order.isLoading,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onResetBurger: () => dispatch(actions.resetBurger()),
   }

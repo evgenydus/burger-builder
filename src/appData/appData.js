@@ -16,9 +16,11 @@ export const EMPTY_BURGER = {
 
 export const authEndpoints = {
   signUp: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
-  signIn: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+  signIn:
+    'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
 }
 
 export const firebaseApiKey = 'AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw'
 
-export const ingredientsUrl = 'https://burger-builder-4a7da.firebaseio.com/ingredients.json'
+export const ingredientsUrl =
+  'https://burger-builder-4a7da.firebaseio.com/ingredients.json'

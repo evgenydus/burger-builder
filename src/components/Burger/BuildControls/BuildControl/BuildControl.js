@@ -1,9 +1,15 @@
-import React from 'react';
+import React from 'react'
 
 import './BuildControl.css'
 
-const BuildControl = ({ added, disabledLess, disabledMore, label, removed, quantity }) => {
-
+const BuildControl = ({
+  added,
+  disabledLess,
+  disabledMore,
+  label,
+  removed,
+  quantity,
+}) => {
   return (
     <div className="build-control">
       <div className="label">{label}</div>
