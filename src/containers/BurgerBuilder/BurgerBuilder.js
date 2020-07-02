@@ -24,7 +24,7 @@ export const BurgerBuilder = ({
   onSetAuthRedirectPath,
   price,
 }) => {
-  const [isPurchasing, setIsPurchasing] = useState(false)
+  const [isModalVisible, setsetIsModalVisible] = useState(false)
 
   useEffect(() => {
     !isBuilding && onInitIngredients()
@@ -44,7 +44,7 @@ export const BurgerBuilder = ({
 
   const purchaseHandler = () => {
     if (isAuthenticated) {
-      setIsPurchasing(true)
+      setsetIsModalVisible(true)
     } else {
       onSetAuthRedirectPath('/checkout')
       history.push('/auth')
@@ -52,7 +52,7 @@ export const BurgerBuilder = ({
   }
 
   const purchaseCancelHandler = () => {
-    setIsPurchasing(false)
+    setsetIsModalVisible(false)
   }
 
   const purchaseContinueHandler = () => {
@@ -98,7 +98,7 @@ export const BurgerBuilder = ({
 
   return (
     <>
-      <Modal modalClosed={purchaseCancelHandler} isVisible={isPurchasing}>
+      <Modal modalClosed={purchaseCancelHandler} isVisible={isModalVisible}>
         {orderSummary}
       </Modal>
       {burger}

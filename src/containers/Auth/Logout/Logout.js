@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 
 import * as actions from '../../../store/actions/index'
 
-const Logout = ({ onLogout }) => {
+const Logout = ({ onCloseSession }) => {
   useEffect(() => {
-    onLogout()
-  }, [onLogout])
+    onCloseSession()
+  }, [onCloseSession])
 
   return <Redirect to="/" />
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogout: () => dispatch(actions.logout())
+    onCloseSession: () => dispatch(actions.closeSession())
   }
 }
 

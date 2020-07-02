@@ -4,11 +4,11 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
   orders: [],
   isLoading: false,
-  isPurchased: false,
+  isPurchasing: false,
 }
 
 const purchaseInit = (state) => {
-  return updateObject(state, { isPurchased: false })
+  return updateObject(state, { isPurchasing: true })
 }
 
 const purchaseBurgerStart = (state) => {
@@ -19,7 +19,7 @@ const purchaseBurgerSuccess = (state, action) => {
   const newOrder = updateObject(action.orderData, { id: action.orderId })
   return updateObject(state, {
     isLoading: false,
-    isPurchased: true,
+    isPurchasing: false,
     orders: state.orders.concat(newOrder),
   })
 }
@@ -29,12 +29,11 @@ const purchaseBurgerFail = (state) => {
 }
 
 const fetchOrdersStart = (state) => {
-  return updateObject(state, { isLoading: true })
+  return updateObject(state, { orders: [], isLoading: true })
 }
 
 const fetchOrdersSuccess = (state, action) => {
   return updateObject(state, { orders: action.orders, isLoading: false, isBuilding: false })
-
 }
 
 const fetchOrdersFail = (state) => {

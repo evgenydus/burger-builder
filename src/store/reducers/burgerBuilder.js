@@ -3,7 +3,7 @@ import { BREAD_PRICE, EMPTY_BURGER, INGREDIENT_PRICES } from '../../appData/appD
 import { updateObject } from '../../shared/utility'
 
 const initialState = {
-  ingredients: null,
+  ingredients: EMPTY_BURGER,
   totalPrice: BREAD_PRICE,
   isError: false,
   isBuilding: false,
@@ -48,12 +48,7 @@ const setIngredients = (state, action) => {
 }
 
 const resetBurger = (state) => {
-  return updateObject(state, {
-    ingredients: EMPTY_BURGER,
-    isError: false,
-    totalPrice: BREAD_PRICE,
-    isBuilding: false,
-  })
+  return updateObject(state, initialState )
 }
 
 const fetchIngredientsFailed = (state) => {
