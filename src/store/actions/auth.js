@@ -2,6 +2,7 @@ import axios from 'axios'
 
 import * as actionTypes from './actionTypes'
 import { firebaseApiKey, authEndpoints } from '../../appData/appData';
+import { resetBurger } from './burgerBuilder';
 
 export const authStart = () => {
   return {
@@ -30,8 +31,13 @@ export const logout = () => {
   localStorage.removeItem('expirationDate')
   localStorage.removeItem('userId')
 
-  return {
-    type: actionTypes.AUTH_LOGOUT,
+  return { type: actionTypes.AUTH_LOGOUT }
+}
+
+export const closeSession = () => {
+  return dispatch => {
+    dispatch(logout())
+    dispatch(resetBurger())
   }
 }
 
@@ -40,7 +46,7 @@ export const checkAuthTimeout = (expiresIn) => {
 
   return dispatch => {
     setTimeout(() => {
-      dispatch(logout())
+      dispatch(closeSession())
     }, expirationTime)
   }
 }
@@ -86,12 +92,12 @@ export const authCheckState = () => {
     const token = localStorage.getItem('token')
 
     if (!token) {
-      dispatch(logout())
+      dispatch(closeSession())
     } else {
       const expirationDate = new Date(localStorage.getItem('expirationDate'))
 
       if (expirationDate <= new Date()) {
-        dispatch(logout())
+        dispatch(closeSession())
       } else {
         const userId = localStorage.getItem('userId')
         const authTimeout = (expirationDate.getTime() - new Date().getTime()) / 1000

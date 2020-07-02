@@ -5,9 +5,8 @@ import { connect } from 'react-redux'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 import OrderConfirmed from './OrderComplete/OrderComplete';
-import Spinner from '../../components/UI/Spinner/Spinner';
 
-const Checkout = ({ history, ings, isPurchased, isLoading, match }) => {
+const Checkout = ({ history, ingredients, match }) => {
   const checkoutCancelledHandler = () => {
     history.goBack()
   }
@@ -16,37 +15,24 @@ const Checkout = ({ history, ings, isPurchased, isLoading, match }) => {
     history.replace('/checkout/contact-data')
   }
 
-  let summary = <Redirect to="/" />
+  if (!ingredients) return <Redirect to="/" />
 
-  if (ings) {
-    summary = (
-      <div>
-        <CheckoutSummary
-          checkoutCancelled={checkoutCancelledHandler}
-          checkoutContinued={checkoutContinuedHandler}
-          ingredients={ings}
-        />
-        {isPurchased ?
-          <Route path={`${match.path}/done`} component={OrderConfirmed} />
-          : isLoading &&
-          <Spinner />
-        }
-        <Route
-          path={`${match.path}/contact-data`}
-          component={ContactData}
-        />
-      </div>
-    )
-  }
-
-  return summary
+  return (
+    <div>
+      <CheckoutSummary
+        checkoutCancelled={checkoutCancelledHandler}
+        checkoutContinued={checkoutContinuedHandler}
+        ingredients={ingredients}
+      />
+      <Route path={`${match.path}/contact-data`} component={ContactData} />
+      <Route path={`${match.path}/done`} component={OrderConfirmed} />
+    </div>
+  )
 }
 
 const mapStateToProps = state => {
   return {
-    ings: state.burgerBuilder.ingredients,
-    isPurchased: state.order.isPurchased,
-    isLoading: state.order.isLoading,
+    ingredients: state.burgerBuilder.ingredients,
   }
 }
 

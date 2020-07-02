@@ -11,7 +11,7 @@ const CheckoutSummary = ({
   checkoutContinued,
   ingredients,
   isLoading,
-  isPurchased,
+  isPurchasing,
 }) => {
 
   return (
@@ -20,7 +20,7 @@ const CheckoutSummary = ({
       <div className="checkout-burger">
         <Burger ingredients={ingredients} />
       </div>
-      {!isPurchased && !isLoading && (
+      {isPurchasing && !isLoading && (
         <>
           <Button btnType={['danger']} clicked={checkoutCancelled}>Cancel</Button>
           <Button btnType={['success']} clicked={checkoutContinued}>Continue</Button>
@@ -32,7 +32,7 @@ const CheckoutSummary = ({
 
 const mapStateToProps = state => {
   return ({
-    isPurchased: state.order.isPurchased,
+    isPurchasing: state.order.isPurchasing,
     isLoading: state.order.isLoading,
   })
 }

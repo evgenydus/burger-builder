@@ -6,8 +6,9 @@ import './OrderComplete.css'
 import * as actions from '../../../store/actions';
 import Button from '../../../components/UI/Button/Button';
 import Card from '../../../components/UI/Card/Card';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
-const OrderComplete = ({ history, onResetBurger }) => {
+const OrderComplete = ({ history, isLoading, onResetBurger }) => {
 
   const goToOrdersHandler = () => {
     history.replace('/orders')
@@ -19,16 +20,25 @@ const OrderComplete = ({ history, onResetBurger }) => {
     onResetBurger()
   }
 
+  const cardRender = (
+    <Card>
+      <h2 className="done-title">Thank you!</h2>
+      <p className="done-text">You will get your burger soon</p>
+      <Button btnType={['danger']} clicked={goToOrdersHandler}>Orders</Button>
+      <Button btnType={['success']} clicked={orderMoreHandler}>Order one more!</Button>
+    </Card>
+  )
+
   return (
     <div className="order-complete">
-      <Card>
-        <h2 className="done-title">Thank you!</h2>
-        <p className="done-text">You will get your burger soon</p>
-        <Button btnType={['danger']} clicked={goToOrdersHandler}>Orders</Button>
-        <Button btnType={['success']} clicked={orderMoreHandler}>Order one more!</Button>
-      </Card>
+      {isLoading ? <Spinner /> : cardRender}
     </div>
   )
+}
+const mapStateToProps = state => {
+  return {
+    isLoading: state.order.isLoading,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -37,5 +47,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(OrderComplete)
-
+export default connect(mapStateToProps, mapDispatchToProps)(OrderComplete)
