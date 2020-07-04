@@ -13,7 +13,7 @@ const OrderSummary = ({
   const ingredientSummary = Object.keys(ingredients).map((ingredientKey) => {
     return (
       <li key={ingredientKey}>
-        <span className="capitalized">{ingredientKey}</span>:{' '}
+        <span className="ingredient-item">{ingredientKey}</span>:{' '}
         {ingredients[ingredientKey]}
       </li>
     )
@@ -23,17 +23,19 @@ const OrderSummary = ({
 
   return (
     <>
-      <h3>Your Order</h3>
+      <h3 className="order-summary-title">Your Order</h3>
       <p>A delicious burger with the following ingredients:</p>
       <ul>{ingredientSummary}</ul>
-      <p className="strong">Total price: {currentPrice}</p>
+      <strong>Total price: ${currentPrice}</strong>
       <p>Continue to Checkout</p>
-      <Button btnType={['danger']} clicked={purchaseCancelled}>
-        Cancel
-      </Button>
-      <Button btnType={['success']} clicked={purchaseContinue}>
-        Continue
-      </Button>
+      <div className="button-container">
+        <Button btnType={['danger']} clicked={purchaseCancelled}>
+          Cancel
+        </Button>
+        <Button btnType={['success']} clicked={purchaseContinue}>
+          Continue
+        </Button>
+      </div>
     </>
   )
 }

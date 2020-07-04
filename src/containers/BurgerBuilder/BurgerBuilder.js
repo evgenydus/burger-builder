@@ -67,6 +67,7 @@ export const BurgerBuilder = ({
   let orderSummary = null
 
   let burger = isError ? <p>Ingredients can't be loaded!</p> : <Spinner />
+
   if (ings) {
     burger = (
       <div className="burger-builder-container">

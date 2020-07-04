@@ -1,29 +1,45 @@
 .button {
-  background-color: transparent;
-  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 0 #f7c5c0;
+  color: #ffffff;
   cursor: pointer;
-  font-family: inherit;
+  font-family: "Graduate", sans-serif;
+  font-size: 16px;
   font-weight: bold;
   margin: 10px;
+  min-width: 117px;
   outline: none;
-  padding: 10px;
+  padding: 6px 24px;
   text-transform: uppercase;
 }
 
-.button:first-of-type {
-  margin-left: 0;
-  padding-left: 0;
+.success {
+  background: linear-gradient(to bottom, #67ec73 5%, #41b24c 100%);
+  border: 1px solid #74b807;
+  text-shadow: 0 1px 0 #528009;
 }
 
-.success {
-  color: #5C9210;
+.success:hover {
+  background:  linear-gradient(to bottom, #41b24c 5%, #67ec73 100%);
 }
 
 .danger {
-  color: #944317;
+  background: linear-gradient(to bottom, #fc8d83 5%, #e4685d 100%);
+  border: 1px solid #d83526;
+  text-shadow: 0 1px 0 #b23e35;
+}
+
+.danger:hover {
+  background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
+}
+
+.button:active {
+  position: relative;
+  top: 1px;
 }
 
 .button:disabled {
-  color: #ccc;
+  background: #ededed linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  color: #777;
   cursor: not-allowed;
 }

@@ -58,6 +58,11 @@
   font-weight: 700;
 }
 
+.checkout-button:active {
+  position: relative;
+  top: 2px;
+}
+
 .clear-btn:hover, .clear-btn:active {
   background-color: #FE463C;
   border: 2px solid #FE463C;

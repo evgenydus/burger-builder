@@ -1,7 +1,16 @@
-.capitalized {
+.ingredient-item {
   text-transform: capitalize;
 }
 
-.strong {
-  font-weight: bold;
+.order-summary-title {
+  font-family: "Graduate", sans-serif;
+  font-size: 22px;
+  margin-bottom: 40px;
+  margin-top: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.button-container {
+  text-align: center;
 }

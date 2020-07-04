@@ -6,6 +6,7 @@ import './Auth.css'
 
 import * as actions from '../../store/actions/index'
 import Button from '../../components/UI/Button/Button'
+import Card from '../../components/UI/Card/Card';
 import Input from '../../components/UI/Input/Input'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import { checkValidity, updateObject } from '../../shared/utility'
@@ -83,7 +84,7 @@ const Auth = ({
   }
 
   return (
-    <div className="auth">
+    <Card cardStyle="auth">
       {isAuthenticated && <Redirect to={authRedirectPath} />}
       {error && <p>{error.message}</p>}
       <form onSubmit={submitHandler}>
@@ -93,7 +94,7 @@ const Auth = ({
       <Button btnType={['danger']} clicked={switchAuthModeHandler}>
         Switch to {isSignUp ? 'sign in' : 'sign up'}
       </Button>
-    </div>
+    </Card>
   )
 }
 

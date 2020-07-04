@@ -1,5 +1,4 @@
 .input {
-  box-sizing: border-box;
   padding: 10px;
   width: 100%;
 }
@@ -12,21 +11,21 @@
 
 .inputElement {
   background-color: #fff;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  border-radius: 7px;
+  border: 0;
   display: block;
   font: inherit;
   outline: none;
   padding: 6px 10px;
+  transition: all .25s ease;
   width: 100%;
 }
 
 .inputElement:focus {
-  background-color: #ccc;
+  background-color: #fff6a8;
   outline: none;
 }
 
 .invalid {
-  background-color: #fae0dd;
-  border: 1px solid #ff0000;
+  box-shadow: 0 0 10px 1px #df3132;
 }
