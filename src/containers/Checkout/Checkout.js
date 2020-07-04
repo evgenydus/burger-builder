@@ -6,24 +6,12 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 import ContactData from './ContactData/ContactData'
 import OrderConfirmed from './OrderComplete/OrderComplete'
 
-const Checkout = ({ history, ingredients, match }) => {
-  const checkoutCancelledHandler = () => {
-    history.goBack()
-  }
-
-  const checkoutContinuedHandler = () => {
-    history.replace('/checkout/contact-data')
-  }
-
+const Checkout = ({ ingredients, match }) => {
   if (!ingredients) return <Redirect to="/" />
 
   return (
     <div>
-      <CheckoutSummary
-        checkoutCancelled={checkoutCancelledHandler}
-        checkoutContinued={checkoutContinuedHandler}
-        ingredients={ingredients}
-      />
+      <CheckoutSummary ingredients={ingredients} />
       <Route path={`${match.path}/contact-data`} component={ContactData} />
       <Route path={`${match.path}/done`} component={OrderConfirmed} />
     </div>
