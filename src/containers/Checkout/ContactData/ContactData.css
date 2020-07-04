@@ -1,8 +1,5 @@
 .contact-data {
-  margin: 20px auto;
-  padding: 10px;
   text-align: center;
-  width: 80%;
 }
 
 .contact-data .card {
@@ -12,6 +9,7 @@
 
 @media (min-width: 600px) {
   .contact-data {
-    width: 500px;
+    flex-basis: 50%;
+    max-width: 500px;
   }
 }

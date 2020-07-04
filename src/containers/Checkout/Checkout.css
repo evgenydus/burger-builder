@@ -1,0 +1,14 @@
+.checkout-title {
+  font-family: "Graduate", sans-serif;
+  font-size: 35px;
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.checkout-container {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}

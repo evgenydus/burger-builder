@@ -1,7 +1,11 @@
+.order-complete {
+  flex-basis: 40%;
+  max-width: 500px;
+}
+
 .order-complete .card {
   border-radius: 20px;
   text-align: center;
-  width: 50%;
 }
 
 .done-title {

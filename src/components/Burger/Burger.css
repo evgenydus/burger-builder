@@ -3,9 +3,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin: auto;
-  max-height: 295px;
   min-height: 235px;
-  overflow: auto;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
@@ -13,7 +11,6 @@
 
 @media (min-height: 650px) {
   .burger {
-    max-height: 330px;
     min-height: 235px;
   }
 }

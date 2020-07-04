@@ -1,17 +1,5 @@
 .checkout-summary {
-  margin: auto;
+  display: inline-block;
+  flex-basis: 40%;
   text-align: center;
-  width: 80%;
-}
-
-.checkout-burger {
-  margin: auto;
-  width: 100%;
-}
-
-.checkout-title {
-  font-family: "Graduate", sans-serif;
-  font-size: 30px;
-  margin-top: 10px;
-  text-transform: uppercase;
 }
