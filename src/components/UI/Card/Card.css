@@ -1,6 +1,4 @@
 .card {
-  background-color: #ffb142;
+  border-radius: 20px;
   box-shadow: 0 2px 3px #ccc;
-  box-sizing: border-box;
-  padding: 10px;
 }

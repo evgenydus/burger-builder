@@ -20,7 +20,7 @@ const OrderComplete = ({ history, isLoading, onResetBurger }) => {
   }
 
   const cardRender = (
-    <Card>
+    <Card cardStyle="order-complete-card">
       <h2 className="done-title">Thank you!</h2>
       <p className="done-text">You will get your burger soon</p>
       <Button btnType={['danger']} clicked={goToOrdersHandler}>

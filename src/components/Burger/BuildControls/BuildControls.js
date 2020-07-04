@@ -3,6 +3,7 @@ import React from 'react'
 import './BuildControls.css'
 
 import BuildControl from './BuildControl/BuildControl'
+import Card from '../../UI/Card/Card';
 
 const controls = [
   { label: 'Salad', type: 'salad', quantity: 0 },
@@ -43,7 +44,7 @@ const BuildControls = ({
   }
 
   return (
-    <div className="build-controls">
+    <Card cardStyle="build-controls">
       {controls.map(({ label, type, quantity }) => (
         <BuildControl
           added={() => ingredientAdded(type)}
@@ -74,7 +75,7 @@ const BuildControls = ({
           {orderBtnText}
         </button>
       </div>
-    </div>
+    </Card>
   )
 }
 

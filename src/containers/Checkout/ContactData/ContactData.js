@@ -15,7 +15,7 @@ import { initialOrderForm } from './initialState'
 
 const ContactData = ({
   history,
-  ings,
+  ingredients,
   isLoading,
   onOrderBurger,
   price,
@@ -38,7 +38,7 @@ const ContactData = ({
     }
 
     const order = {
-      ingredients: ings,
+      ingredients,
       price,
       orderData: formData,
       userId,
@@ -113,7 +113,7 @@ const ContactData = ({
 
   return (
     <div className="contact-data">
-      <Card>
+      <Card cardStyle="contact-form-card">
         <h3>Enter your Contact Data</h3>
         {contactForm}
       </Card>
@@ -123,7 +123,7 @@ const ContactData = ({
 
 const mapStateToProps = (state) => {
   return {
-    ings: state.burgerBuilder.ingredients,
+    ingredients: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
     isLoading: state.order.isLoading,
     token: state.auth.token,

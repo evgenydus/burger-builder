@@ -1,10 +1,10 @@
 .order-complete {
-  flex-basis: 40%;
-  max-width: 500px;
+  flex-basis: 50%;
 }
 
-.order-complete .card {
-  border-radius: 20px;
+.order-complete-card {
+  background-color: #ffb142;
+  padding: 10px;
   text-align: center;
 }
 

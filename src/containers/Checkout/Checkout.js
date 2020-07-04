@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 
 import './Checkout.css'
 
-import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
+import Burger from '../../components/Burger/Burger';
 import ContactData from './ContactData/ContactData'
 import OrderConfirmed from './OrderComplete/OrderComplete'
+import PageTitle from '../../components/UI/PageTitle/PageTitle';
 
 const Checkout = ({ ingredients, match, isPurchasing }) => {
   if (!ingredients) return <Redirect to="/" />
@@ -17,9 +18,9 @@ const Checkout = ({ ingredients, match, isPurchasing }) => {
 
   return (
     <>
-      <h2 className="checkout-title">{checkoutTitle}</h2>
+      <PageTitle>{checkoutTitle}</PageTitle>
       <div className="checkout-container">
-        <CheckoutSummary ingredients={ingredients} />
+        <Burger ingredients={ingredients} />
         <Route path={`${match.path}/contact-data`} component={ContactData} />
         <Route path={`${match.path}/done`} component={OrderConfirmed} />
       </div>

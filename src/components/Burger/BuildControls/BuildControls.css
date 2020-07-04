@@ -1,14 +1,14 @@
 .build-controls {
   align-items: center;
   background-color: #ffb142;
-  box-shadow: 0 2px 1px #ccc;
   display: flex;
+  flex-basis: 50%;
   flex-flow: column;
   font-size: 18px;
   font-weight: 500;
-  margin-top: 25px;
-  padding: 30px 0;
-  width: 100%;
+  justify-content: center;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 .price {

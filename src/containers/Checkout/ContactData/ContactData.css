@@ -2,14 +2,13 @@
   text-align: center;
 }
 
-.contact-data .card {
-  border-radius: 20px;
-  box-shadow: 0 2px 3px #ccc;
+.contact-form-card {
+  background-color: #ffb142;
+  padding: 10px;
 }
 
 @media (min-width: 600px) {
   .contact-data {
     flex-basis: 50%;
-    max-width: 500px;
   }
 }

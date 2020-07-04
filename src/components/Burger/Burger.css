@@ -2,21 +2,13 @@
   font-family: "Graduate", "Quicksand", sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
-  margin: auto;
-  min-height: 235px;
   text-align: center;
   text-transform: uppercase;
-  width: 100%;
-}
-
-@media (min-height: 650px) {
-  .burger {
-    min-height: 235px;
-  }
 }
 
 @media (min-width: 501px) {
   .burger {
+    flex-basis: 50%;
     width: 70%;
   }
 }
