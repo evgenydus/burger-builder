@@ -61,14 +61,6 @@ export const BurgerBuilder = ({
     history.push('/checkout/contact-data')
   }
 
-  const disabledInfo = {
-    ...ings
-  }
-
-  for (let key in disabledInfo) {
-    disabledInfo[key] = disabledInfo[key] <= 0
-  }
-
   let orderSummary = null
 
   let burger = isError ? <p>Ingredients can't be loaded!</p> : <Spinner />
@@ -78,9 +70,9 @@ export const BurgerBuilder = ({
         <Burger ingredients={ings} />
         <BuildControls
           clear={onClearBurger}
-          disabled={disabledInfo}
           ingredientAdded={onIngredientAdded}
           ingredientRemoved={onIngredientRemoved}
+          ings={ings}
           isAuth={isAuthenticated}
           isPurchasable={!updatePurchaseState(ings)}
           price={price}
