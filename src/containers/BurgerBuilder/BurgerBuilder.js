@@ -49,7 +49,7 @@ export const BurgerBuilder = ({
     if (isAuthenticated) {
       setIsModalVisible(true)
     } else {
-      onSetAuthRedirectPath('/checkout')
+      onSetAuthRedirectPath('/checkout/contact-data')
       onInitPurchase()
       history.push('/auth')
     }
