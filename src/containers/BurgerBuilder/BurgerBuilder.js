@@ -47,6 +47,7 @@ export const BurgerBuilder = ({
       setsetIsModalVisible(true)
     } else {
       onSetAuthRedirectPath('/checkout')
+      onInitPurchase()
       history.push('/auth')
     }
   }
