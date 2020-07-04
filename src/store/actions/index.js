@@ -1,6 +1,6 @@
 export {
   addIngredient,
-  clearBurger,
+  resetBurger,
   fetchIngredientsFailed,
   initIngredients,
   removeIngredient,

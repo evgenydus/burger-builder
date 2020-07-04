@@ -14,6 +14,7 @@ export const BurgerBuilder = ({
   history,
   ings,
   isAuthenticated,
+  isBuilding,
   isError,
   onClearBurger,
   onIngredientAdded,
@@ -26,8 +27,8 @@ export const BurgerBuilder = ({
   const [isPurchasing, setIsPurchasing] = useState(false)
 
   useEffect(() => {
-    onInitIngredients()
-  }, [onInitIngredients])
+    !isBuilding && onInitIngredients()
+  }, [onInitIngredients, isBuilding])
 
   const updatePurchaseState = (ingredients) => {
     const sum = Object.keys(ingredients)
@@ -112,6 +113,7 @@ const mapStateToProps = state => {
     price: state.burgerBuilder.totalPrice,
     isError: state.burgerBuilder.isError,
     isAuthenticated: state.auth.token,
+    isBuilding: state.burgerBuilder.isBuilding,
   }
 }
 
@@ -120,7 +122,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(actions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(actions.removeIngredient(ingName)),
-    onClearBurger: () => dispatch(actions.clearBurger()),
+    onClearBurger: () => dispatch(actions.resetBurger()),
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onInitPurchase: () => dispatch(actions.purchaseInit()),
     onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))

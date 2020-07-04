@@ -40,15 +40,20 @@ const removeIngredient = (state, action) => {
 const setIngredients = (state, action) => {
   const { salad, bacon, cheese, meat } = action.ingredients
   return updateObject(state, {
-    ingredients: { salad, bacon, cheese, meat},
+    ingredients: { salad, bacon, cheese, meat },
     totalPrice: BREAD_PRICE,
     isError: false,
     isBuilding: false,
   })
 }
 
-const clearBurger = (state) => {
-  return updateObject(state, { ingredients: EMPTY_BURGER, isError: false })
+const resetBurger = (state) => {
+  return updateObject(state, {
+    ingredients: EMPTY_BURGER,
+    isError: false,
+    totalPrice: BREAD_PRICE,
+    isBuilding: false,
+  })
 }
 
 const fetchIngredientsFailed = (state) => {
@@ -57,12 +62,23 @@ const fetchIngredientsFailed = (state) => {
 
 const burgerBuilder = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_INGREDIENT: return addIngredient(state, action)
-    case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action)
-    case actionTypes.CLEAR_BURGER: return clearBurger(state)
-    case actionTypes.SET_INGREDIENTS: return setIngredients(state, action)
-    case actionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state)
-    default: return state
+    case actionTypes.ADD_INGREDIENT:
+      return addIngredient(state, action)
+
+    case actionTypes.REMOVE_INGREDIENT:
+      return removeIngredient(state, action)
+
+    case actionTypes.RESET_BURGER:
+      return resetBurger(state)
+
+    case actionTypes.SET_INGREDIENTS:
+      return setIngredients(state, action)
+
+    case actionTypes.FETCH_INGREDIENTS_FAILED:
+      return fetchIngredientsFailed(state)
+
+    default:
+      return state
   }
 }
 
