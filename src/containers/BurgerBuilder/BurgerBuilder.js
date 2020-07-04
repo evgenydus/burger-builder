@@ -58,7 +58,7 @@ export const BurgerBuilder = ({
 
   const purchaseContinueHandler = () => {
     onInitPurchase()
-    history.push('/checkout')
+    history.push('/checkout/contact-data')
   }
 
   let orderSummary = null

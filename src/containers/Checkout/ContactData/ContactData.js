@@ -25,6 +25,10 @@ const ContactData = ({
   const [isFormValid, setIsFormValid] = useState(false)
   const [orderForm, setOrderForm] = useState(initialOrderForm)
 
+  const cancelHandler = () => {
+    history.goBack()
+  }
+
   const orderHandler = (event) => {
     event.preventDefault()
 
@@ -40,8 +44,8 @@ const ContactData = ({
       userId,
     }
 
-    history.replace('/checkout/done')
     onOrderBurger(order, token)
+    history.replace('/checkout/done')
   }
 
   const inputChangedHandler = (event, inputIdentifier) => {
@@ -76,8 +80,8 @@ const ContactData = ({
     })
   }
 
-  let form = (
-    <form onSubmit={orderHandler}>
+  let contactForm = (
+    <div>
       {formElementsArray.map((formElement) => (
         <Input
           changed={(event) => inputChangedHandler(event, formElement.id)}
@@ -90,6 +94,9 @@ const ContactData = ({
           value={formElement.config.value}
         />
       ))}
+      <Button btnType={['danger']} clicked={cancelHandler}>
+        Cancel
+      </Button>
       <Button
         btnType={['success']}
         clicked={orderHandler}
@@ -97,18 +104,18 @@ const ContactData = ({
       >
         Order
       </Button>
-    </form>
+    </div>
   )
 
   if (isLoading) {
-    form = <Spinner />
+    contactForm = <Spinner />
   }
 
   return (
     <div className="contact-data">
       <Card>
         <h3>Enter your Contact Data</h3>
-        {form}
+        {contactForm}
       </Card>
     </div>
   )
