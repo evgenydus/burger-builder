@@ -3,7 +3,7 @@ import React from 'react'
 import './BuildControls.css'
 
 import BuildControl from './BuildControl/BuildControl'
-import Card from '../../UI/Card/Card';
+import Card from '../../UI/Card/Card'
 
 const controls = [
   { label: 'Salad', type: 'salad', quantity: 0 },

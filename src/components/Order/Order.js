@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Order.css'
 
-import Card from '../UI/Card/Card';
+import Card from '../UI/Card/Card'
 
 const Order = ({ date, ingredients, number, price }) => {
   const fixedPrice = price.toFixed(2)

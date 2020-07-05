@@ -9,7 +9,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Burger from '../../components/Burger/Burger'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
-import PageTitle from '../../components/UI/PageTitle/PageTitle';
+import PageTitle from '../../components/UI/PageTitle/PageTitle'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler'
 

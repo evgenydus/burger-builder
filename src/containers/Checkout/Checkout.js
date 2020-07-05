@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 
 import './Checkout.css'
 
-import Burger from '../../components/Burger/Burger';
+import Burger from '../../components/Burger/Burger'
 import ContactData from './ContactData/ContactData'
 import OrderConfirmed from './OrderComplete/OrderComplete'
-import PageTitle from '../../components/UI/PageTitle/PageTitle';
+import PageTitle from '../../components/UI/PageTitle/PageTitle'
 
 const Checkout = ({ ingredients, match, isPurchasing }) => {
   if (!ingredients) return <Redirect to="/" />

@@ -1,29 +1,65 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import './Orders.css'
+
 import * as orderActions from '../../store/actions/index'
 import axios from '../../axios-orders'
+import Button from '../../components/UI/Button/Button'
 import Order from '../../components/Order/Order'
+import PageTitle from '../../components/UI/PageTitle/PageTitle'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler'
 
-const Orders = ({ isLoading, onFetchOrders, orders, token, userId }) => {
+const noOrdersText = 'You have no orders yet'
+
+const Orders = ({
+  history,
+  isLoading,
+  onFetchOrders,
+  orders,
+  token,
+  userId,
+}) => {
   useEffect(() => {
     onFetchOrders(token, userId)
   }, [onFetchOrders, token, userId])
 
-  const ordersList = orders.map(({ id, ingredients, orderDate, orderNumber, price }) => {
+  const ordersList = orders.map(
+    ({ id, ingredients, orderDate, orderNumber, price }) => {
+      return (
+        <Order
+          date={orderDate}
+          ingredients={ingredients}
+          key={id}
+          number={orderNumber}
+          price={+price}
+        />
+      )
+    }
+  )
 
-    return <Order
-      date={orderDate}
-      ingredients={ingredients}
-      key={id}
-      number={orderNumber}
-      price={+price}
-    />
-  })
+  const orderNowHandler = () => {
+    history.replace('/')
+  }
 
-  return <div>{!isLoading ? ordersList : <Spinner />}</div>
+  const ordersRender =
+    orders.length > 0 ? (
+      ordersList
+    ) : (
+      <>
+        <PageTitle>{noOrdersText}</PageTitle>
+        <Button btnType={['success']} clicked={orderNowHandler}>
+          Order now!
+        </Button>
+      </>
+    )
+
+  return (
+    <div className="orders-container">
+      {!isLoading ? ordersRender : <Spinner />}
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
