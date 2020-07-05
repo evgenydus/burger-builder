@@ -15,6 +15,7 @@ const noOrdersText = 'You have no orders yet'
 
 const Orders = ({
   history,
+  isLoaded,
   isLoading,
   onFetchOrders,
   orders,
@@ -22,7 +23,7 @@ const Orders = ({
   userId,
 }) => {
   useEffect(() => {
-    onFetchOrders(token, userId)
+    !isLoaded && onFetchOrders(token, userId)
   }, [onFetchOrders, token, userId])
 
   const ordersList = orders.map(
@@ -68,6 +69,7 @@ const mapStateToProps = (state) => {
     isLoading: state.order.isLoading,
     token: state.auth.token,
     userId: state.auth.userId,
+    isLoaded: state.order.isLoaded,
   }
 }
 

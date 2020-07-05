@@ -3,6 +3,7 @@ import axios from 'axios'
 import * as actionTypes from './actionTypes'
 import { firebaseApiKey, authEndpoints } from '../../appData/appData'
 import { resetBurger } from './burgerBuilder'
+import { toggleOrdersFetching } from './order'
 
 export const authStart = () => {
   return {
@@ -35,6 +36,7 @@ export const logout = () => {
 
 export const closeSession = () => {
   return (dispatch) => {
+    dispatch(toggleOrdersFetching())
     dispatch(logout())
     dispatch(resetBurger())
   }

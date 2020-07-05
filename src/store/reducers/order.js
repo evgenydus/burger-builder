@@ -5,6 +5,7 @@ const initialState = {
   orders: [],
   isLoading: false,
   isPurchasing: false,
+  isLoaded: false,
 }
 
 const purchaseInit = (state) => {
@@ -32,11 +33,16 @@ const fetchOrdersStart = (state) => {
   return updateObject(state, { orders: [], isLoading: true })
 }
 
+const toggleOrdersFetching = (state) => {
+  return updateObject(state, { isLoaded: false, orders: [] })
+}
+
 const fetchOrdersSuccess = (state, action) => {
   return updateObject(state, {
     orders: action.orders,
     isLoading: false,
     isBuilding: false,
+    isLoaded: true,
   })
 }
 
@@ -60,6 +66,8 @@ const reducer = (state = initialState, action) => {
       return fetchOrdersSuccess(state, action)
     case actionTypes.FETCH_ORDERS_FAIL:
       return fetchOrdersFail(state)
+    case actionTypes.TOGGLE_ORDERS_FETCHING:
+      return toggleOrdersFetching(state)
     default:
       return state
   }
