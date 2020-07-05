@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from '../../../axios-orders'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 import './ContactData.css'
 
@@ -37,11 +38,16 @@ const ContactData = ({
       formData[formElementIdentifier] = orderForm[formElementIdentifier].value
     }
 
+    const orderNumber = String(Date.now()).slice(-6)
+    const orderDate = moment().format('D MMMM')
+
     const order = {
       ingredients,
       price,
       orderData: formData,
       userId,
+      orderNumber,
+      orderDate,
     }
 
     onOrderBurger(order, token)

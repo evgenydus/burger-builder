@@ -1,16 +1,39 @@
 .order {
-  border: 1px solid #eee;
-  box-shadow: 0 2px 3px #ccc;
-  box-sizing: border-box;
-  margin: 10px auto;
-  padding: 10px;
+  align-items: center;
+  background-color: #ffb142;
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+  justify-content: space-around;
+  margin: 15px auto;
+  padding: 20px 0;
+  text-align: center;
   width: 80%;
 }
 
 .order-item {
-  border: 1px solid #ccc;
   display: inline-block;
   margin: 0 8px;
-  padding: 5px;
   text-transform: capitalize;
+}
+
+.order-date {
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.order-number{
+  font-weight: 500;
+  margin: 0;
+}
+
+.ingredients-title {
+  font-size: 25px;
+  margin-top: 0;
+}
+
+.order-price {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0;
 }

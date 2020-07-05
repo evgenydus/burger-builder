@@ -12,9 +12,16 @@ const Orders = ({ isLoading, onFetchOrders, orders, token, userId }) => {
     onFetchOrders(token, userId)
   }, [onFetchOrders, token, userId])
 
-  const ordersList = orders.map(({ id, ingredients, price }) => (
-    <Order key={id} ingredients={ingredients} price={+price} />
-  ))
+  const ordersList = orders.map(({ id, ingredients, orderDate, orderNumber, price }) => {
+
+    return <Order
+      date={orderDate}
+      ingredients={ingredients}
+      key={id}
+      number={orderNumber}
+      price={+price}
+    />
+  })
 
   return <div>{!isLoading ? ordersList : <Spinner />}</div>
 }
