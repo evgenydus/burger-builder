@@ -9,7 +9,7 @@ import * as actions from '../../../store/actions/index'
 import Button from '../../../components/UI/Button/Button'
 import Card from '../../../components/UI/Card/Card'
 import Input from '../../../components/UI/Input/Input'
-import Spinner from '../../../components/UI/Spinner/Spinner'
+import Loader from '../../../components/UI/Loader/Loader'
 import withErrorHandler from '../../../components/hoc/withErrorHandler/withErrorHandler'
 import { checkValidity, updateObject } from '../../../shared/utility'
 import { initialOrderForm } from './initialState'
@@ -117,7 +117,7 @@ const ContactData = ({
     <div className="contact-data">
       <Card cardStyle="contact-form-card">
         <h3>Enter your Contact Data</h3>
-        {isLoading ? <Spinner /> : contactForm}
+        {isLoading ? <Loader /> : contactForm}
       </Card>
     </div>
   )

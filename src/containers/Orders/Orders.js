@@ -6,9 +6,9 @@ import './Orders.css'
 import * as orderActions from '../../store/actions/index'
 import axios from '../../axios-orders'
 import Button from '../../components/UI/Button/Button'
+import Loader from '../../components/UI/Loader/Loader'
 import Order from '../../components/Order/Order'
 import PageTitle from '../../components/UI/PageTitle/PageTitle'
-import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler'
 
 const noOrdersText = 'You have no orders yet'
@@ -24,7 +24,7 @@ const Orders = ({
 }) => {
   useEffect(() => {
     !isLoaded && onFetchOrders(token, userId)
-  }, [onFetchOrders, token, userId])
+  }, [isLoaded, onFetchOrders, token, userId])
 
   const ordersList = orders.map(
     ({ id, ingredients, orderDate, orderNumber, price }) => {
@@ -58,7 +58,7 @@ const Orders = ({
 
   return (
     <div className="orders-container">
-      {!isLoading ? ordersRender : <Spinner />}
+      {!isLoading ? ordersRender : <Loader />}
     </div>
   )
 }

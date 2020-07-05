@@ -7,8 +7,8 @@ import './App.css'
 
 import BurgerBuilder from '../containers/BurgerBuilder/BurgerBuilder'
 import Layout from '../components/hoc/Layout/Layout'
+import Loader from '../components/UI/Loader/Loader'
 import Logout from '../containers/Auth/Logout/Logout'
-import Spinner from '../components/UI/Spinner/Spinner'
 
 const Checkout = React.lazy(() => {
   return import('../containers/Checkout/Checkout')
@@ -53,7 +53,7 @@ const App = (props) => {
   return (
     <div>
       <Layout>
-        <Suspense fallback={<Spinner />}>{routes}</Suspense>
+        <Suspense fallback={<Loader />}>{routes}</Suspense>
       </Layout>
     </div>
   )

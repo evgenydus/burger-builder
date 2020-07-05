@@ -6,7 +6,7 @@ import './OrderComplete.css'
 import * as actions from '../../../store/actions'
 import Button from '../../../components/UI/Button/Button'
 import Card from '../../../components/UI/Card/Card'
-import Spinner from '../../../components/UI/Spinner/Spinner'
+import Loader from '../../../components/UI/Loader/Loader'
 
 const OrderComplete = ({ history, isLoading, onResetBurger }) => {
   const goToOrdersHandler = () => {
@@ -33,7 +33,7 @@ const OrderComplete = ({ history, isLoading, onResetBurger }) => {
   )
 
   return (
-    <div className="order-complete">{isLoading ? <Spinner /> : cardRender}</div>
+    <div className="order-complete">{isLoading ? <Loader /> : cardRender}</div>
   )
 }
 const mapStateToProps = (state) => {

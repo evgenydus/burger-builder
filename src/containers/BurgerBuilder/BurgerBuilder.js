@@ -7,10 +7,10 @@ import * as actions from '../../store/actions/index'
 import axios from '../../axios-orders'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Burger from '../../components/Burger/Burger'
+import Loader from '../../components/UI/Loader/Loader'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import PageTitle from '../../components/UI/PageTitle/PageTitle'
-import Spinner from '../../components/UI/Spinner/Spinner'
 import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHandler'
 
 export const BurgerBuilder = ({
@@ -66,7 +66,7 @@ export const BurgerBuilder = ({
 
   let orderSummary = null
 
-  let burger = isError ? <p>Ingredients can't be loaded!</p> : <Spinner />
+  let burger = isError ? <p>Ingredients can't be loaded!</p> : <Loader />
 
   if (ings) {
     burger = (
