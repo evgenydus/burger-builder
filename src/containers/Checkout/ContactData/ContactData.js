@@ -86,7 +86,7 @@ const ContactData = ({
     })
   }
 
-  let contactForm = (
+  const contactForm = (
     <div>
       {formElementsArray.map((formElement) => (
         <Input
@@ -113,15 +113,11 @@ const ContactData = ({
     </div>
   )
 
-  if (isLoading) {
-    contactForm = <Spinner />
-  }
-
   return (
     <div className="contact-data">
       <Card cardStyle="contact-form-card">
         <h3>Enter your Contact Data</h3>
-        {contactForm}
+        {isLoading ? <Spinner /> : contactForm}
       </Card>
     </div>
   )
