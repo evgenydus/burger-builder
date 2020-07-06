@@ -58,7 +58,7 @@ const Orders = ({
 
   return (
     <div className="orders-container">
-      {!isLoading ? ordersRender : <Loader />}
+      {isLoaded && !isLoading ? ordersRender : <Loader />}
     </div>
   )
 }
