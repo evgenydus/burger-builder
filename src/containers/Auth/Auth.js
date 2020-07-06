@@ -21,14 +21,17 @@ const Auth = ({
   onAuth,
   onSetAuthRedirectPath,
 }) => {
-  const [authForm, setAuthForm] = useState(initialAuthForm)
   const [isSignUp, setIsSignUp] = useState(false)
+  const [authForm, setAuthForm] = useState(initialAuthForm.login)
 
   useEffect(() => {
     if (!isBuildingBurger && authRedirectPath !== '/') {
       onSetAuthRedirectPath()
     }
-  }, [authRedirectPath, onSetAuthRedirectPath, isBuildingBurger])
+    isSignUp
+      ? setAuthForm(initialAuthForm.signUp)
+      : setAuthForm(initialAuthForm.login)
+  }, [authRedirectPath, onSetAuthRedirectPath, isBuildingBurger, isSignUp])
 
   const inputChangedHandler = (event, controlName) => {
     const updatedControls = updateObject(authForm, {

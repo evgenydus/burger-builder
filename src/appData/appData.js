@@ -16,7 +16,7 @@ export const EMPTY_BURGER = {
 
 export const authEndpoints = {
   signUp: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
-  signIn:
+  login:
     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
 }
 

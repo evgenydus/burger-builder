@@ -61,8 +61,8 @@ export const auth = (email, password, isSignUp) => {
       returnSecureToken: true,
     }
 
-    const { signUp, signIn } = authEndpoints
-    const endpoint = isSignUp ? signUp : signIn
+    const { signUp, login } = authEndpoints
+    const endpoint = isSignUp ? signUp : login
 
     axios
       .post(`${endpoint}${firebaseApiKey}`, authData)
