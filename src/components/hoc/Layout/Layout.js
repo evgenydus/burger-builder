@@ -19,10 +19,7 @@ const Layout = ({ children, isAuthenticated }) => {
 
   return (
     <>
-      <Toolbar
-        drawerToggleClicked={showSideDrawerToggleHandler}
-        isAuth={isAuthenticated}
-      />
+      <Toolbar drawerToggleClicked={showSideDrawerToggleHandler} isAuth={isAuthenticated} />
       <SideDrawer
         closed={sideDrawerClosedHandler}
         isAuth={isAuthenticated}

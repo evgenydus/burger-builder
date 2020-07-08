@@ -6,15 +6,7 @@ export const updateObject = (oldObject, updatedProperties) => {
 }
 
 export const checkValidity = (value, rules) => {
-  const {
-    isEmail,
-    isNumeric,
-    isPhone,
-    isRequired,
-    isText,
-    maxLength,
-    minLength,
-  } = rules
+  const { isEmail, isNumeric, isPhone, isRequired, isText, maxLength, minLength } = rules
   let isValid = true
 
   if (isRequired) {

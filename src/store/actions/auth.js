@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../../axios-orders'
 
 import * as actionTypes from './actionTypes'
 import { firebaseApiKey, authEndpoints } from '../../appData/appData'
@@ -64,8 +64,9 @@ export const auth = (email, password, isSignUp) => {
     const { signUp, login } = authEndpoints
     const endpoint = isSignUp ? signUp : login
 
+    const userData = { email }
     axios
-      .post(`${endpoint}${firebaseApiKey}`, authData)
+      .post(`${endpoint}?key=${firebaseApiKey}`, authData)
       .then((response) => {
         const { idToken, localId, expiresIn } = response.data
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000)
@@ -75,6 +76,10 @@ export const auth = (email, password, isSignUp) => {
         localStorage.setItem('userId', localId)
         dispatch(authSuccess(idToken, localId))
         dispatch(checkAuthTimeout(expiresIn))
+
+        if (isSignUp) {
+          axios.post(`/users.json?auth=${idToken}`, userData)
+        }
       })
       .catch((err) => {
         dispatch(authFail(err.response.data.error))
@@ -102,8 +107,7 @@ export const authCheckState = () => {
         dispatch(closeSession())
       } else {
         const userId = localStorage.getItem('userId')
-        const authTimeout =
-          (expirationDate.getTime() - new Date().getTime()) / 1000
+        const authTimeout = (expirationDate.getTime() - new Date().getTime()) / 1000
 
         dispatch(authSuccess(token, userId))
         dispatch(checkAuthTimeout(authTimeout))

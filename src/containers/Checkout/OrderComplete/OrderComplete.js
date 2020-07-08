@@ -32,9 +32,7 @@ const OrderComplete = ({ history, isLoading, onResetBurger }) => {
     </Card>
   )
 
-  return (
-    <div className="order-complete">{isLoading ? <Loader /> : cardRender}</div>
-  )
+  return <div className="order-complete">{isLoading ? <Loader /> : cardRender}</div>
 }
 const mapStateToProps = (state) => {
   return {

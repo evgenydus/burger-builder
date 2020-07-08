@@ -15,12 +15,10 @@ export const EMPTY_BURGER = {
 }
 
 export const authEndpoints = {
-  signUp: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
-  login:
-    'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+  signUp: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp',
+  login: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword',
 }
 
 export const firebaseApiKey = 'AIzaSyBQsjP9tWeeB9zyT33p0McR2DEj8ktwzYw'
 
-export const ingredientsUrl =
-  'https://burger-builder-4a7da.firebaseio.com/ingredients.json'
+export const ingredientsUrl = 'https://burger-builder-4a7da.firebaseio.com/ingredients.json'

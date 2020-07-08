@@ -23,23 +23,13 @@ const Input = ({
   switch (elementType) {
     case 'input':
       inputElement = (
-        <input
-          className={inputClasses}
-          onChange={changed}
-          value={value}
-          {...elementConfig}
-        />
+        <input className={inputClasses} onChange={changed} value={value} {...elementConfig} />
       )
       break
 
     case 'textarea':
       inputElement = (
-        <textarea
-          className={inputClasses}
-          onChange={changed}
-          value={value}
-          {...elementConfig}
-        />
+        <textarea className={inputClasses} onChange={changed} value={value} {...elementConfig} />
       )
       break
 
@@ -56,9 +46,7 @@ const Input = ({
       break
 
     default:
-      inputElement = (
-        <input className={inputClasses} value={value} {...elementConfig} />
-      )
+      inputElement = <input className={inputClasses} value={value} {...elementConfig} />
   }
 
   return (

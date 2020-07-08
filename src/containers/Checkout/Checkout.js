@@ -12,9 +12,7 @@ import PageTitle from '../../components/UI/PageTitle/PageTitle'
 const Checkout = ({ ingredients, match, isPurchasing }) => {
   if (!ingredients) return <Redirect to="/" />
 
-  const checkoutTitle = isPurchasing
-    ? 'We are sure it tastes well!'
-    : 'Order Complete!'
+  const checkoutTitle = isPurchasing ? 'We are sure it tastes well!' : 'Order Complete!'
 
   return (
     <>

@@ -16,6 +16,5 @@ const Modal = ({ isVisible, children, modalClosed }) => {
 export default React.memo(
   Modal,
   (prevProps, nextProps) =>
-    nextProps.isVisible === prevProps.isVisible &&
-    nextProps.children === prevProps.children
+    nextProps.isVisible === prevProps.isVisible && nextProps.children === prevProps.children
 )

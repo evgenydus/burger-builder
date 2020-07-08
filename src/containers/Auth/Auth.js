@@ -28,19 +28,14 @@ const Auth = ({
     if (!isBuildingBurger && authRedirectPath !== '/') {
       onSetAuthRedirectPath()
     }
-    isSignUp
-      ? setAuthForm(initialAuthForm.signUp)
-      : setAuthForm(initialAuthForm.login)
+    isSignUp ? setAuthForm(initialAuthForm.signUp) : setAuthForm(initialAuthForm.login)
   }, [authRedirectPath, onSetAuthRedirectPath, isBuildingBurger, isSignUp])
 
   const inputChangedHandler = (event, controlName) => {
     const updatedControls = updateObject(authForm, {
       [controlName]: updateObject(authForm[controlName], {
         value: event.target.value,
-        isValid: checkValidity(
-          event.target.value,
-          authForm[controlName].validation
-        ),
+        isValid: checkValidity(event.target.value, authForm[controlName].validation),
         isTouched: true,
       }),
     })
@@ -92,7 +87,9 @@ const Auth = ({
       {error && <p>{error.message}</p>}
       <form onSubmit={submitHandler}>
         {form}
-        <Button btnType={['success']}>Submit</Button>
+        <Button type="submit" btnType={['success']}>
+          Submit
+        </Button>
       </form>
       <Button btnType={['danger']} clicked={switchAuthModeHandler}>
         Switch to {isSignUp ? 'sign in' : 'sign up'}
@@ -113,8 +110,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (email, password, isSignUp) =>
-      dispatch(actions.auth(email, password, isSignUp)),
+    onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
     onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
   }
 }

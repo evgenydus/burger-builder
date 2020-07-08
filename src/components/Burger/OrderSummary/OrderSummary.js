@@ -4,17 +4,11 @@ import './OrderSummary.css'
 
 import Button from '../../UI/Button/Button'
 
-const OrderSummary = ({
-  ingredients,
-  price,
-  purchaseCancelled,
-  purchaseContinue,
-}) => {
+const OrderSummary = ({ ingredients, price, purchaseCancelled, purchaseContinue }) => {
   const ingredientSummary = Object.keys(ingredients).map((ingredientKey) => {
     return (
       <li key={ingredientKey}>
-        <span className="ingredient-item">{ingredientKey}</span>:{' '}
-        {ingredients[ingredientKey]}
+        <span className="ingredient-item">{ingredientKey}</span>: {ingredients[ingredientKey]}
       </li>
     )
   })

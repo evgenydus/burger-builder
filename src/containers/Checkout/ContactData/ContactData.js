@@ -14,15 +14,7 @@ import withErrorHandler from '../../../components/hoc/withErrorHandler/withError
 import { checkValidity, updateObject } from '../../../shared/utility'
 import { initialOrderForm } from './initialState'
 
-const ContactData = ({
-  history,
-  ingredients,
-  isLoading,
-  onOrderBurger,
-  price,
-  token,
-  userId,
-}) => {
+const ContactData = ({ history, ingredients, isLoading, onOrderBurger, price, token, userId }) => {
   const [isFormValid, setIsFormValid] = useState(false)
   const [orderForm, setOrderForm] = useState(initialOrderForm)
 
@@ -57,10 +49,7 @@ const ContactData = ({
   const inputChangedHandler = (event, inputIdentifier) => {
     const updatedFormElement = updateObject(orderForm[inputIdentifier], {
       value: event.target.value,
-      isValid: checkValidity(
-        event.target.value,
-        orderForm[inputIdentifier].validation
-      ),
+      isValid: checkValidity(event.target.value, orderForm[inputIdentifier].validation),
       isTouched: true,
     })
 
@@ -87,7 +76,7 @@ const ContactData = ({
   }
 
   const contactForm = (
-    <div>
+    <form onSubmit={orderHandler}>
       {formElementsArray.map((formElement) => (
         <Input
           changed={(event) => inputChangedHandler(event, formElement.id)}
@@ -103,14 +92,10 @@ const ContactData = ({
       <Button btnType={['danger']} clicked={cancelHandler}>
         Cancel
       </Button>
-      <Button
-        btnType={['success']}
-        clicked={orderHandler}
-        disabled={!isFormValid}
-      >
+      <Button btnType={['success']} type="submit" disabled={!isFormValid}>
         Order
       </Button>
-    </div>
+    </form>
   )
 
   return (
@@ -135,12 +120,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onOrderBurger: (orderData, token) =>
-      dispatch(actions.purchaseBurger(orderData, token)),
+    onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token)),
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withErrorHandler(ContactData, axios))
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios))

@@ -60,18 +60,10 @@ const BuildControls = ({
         Current price: <strong>${currentPrice}</strong>
       </p>
       <div className="checkout">
-        <button
-          className="checkout-button clear-btn"
-          disabled={isPurchasable}
-          onClick={clear}
-        >
+        <button className="checkout-button clear-btn" disabled={isPurchasable} onClick={clear}>
           Clear all
         </button>
-        <button
-          className="checkout-button order-btn"
-          disabled={isPurchasable}
-          onClick={purchase}
-        >
+        <button className="checkout-button order-btn" disabled={isPurchasable} onClick={purchase}>
           {orderBtnText}
         </button>
       </div>

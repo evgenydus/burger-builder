@@ -13,32 +13,23 @@ import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHan
 
 const noOrdersText = 'You have no orders yet'
 
-const Orders = ({
-  history,
-  isLoaded,
-  isLoading,
-  onFetchOrders,
-  orders,
-  token,
-  userId,
-}) => {
+const Orders = ({ history, isLoaded, isLoading, onFetchOrders, orders, token, userId }) => {
   useEffect(() => {
     !isLoaded && onFetchOrders(token, userId)
   }, [isLoaded, onFetchOrders, token, userId])
 
-  const ordersList = orders.map(
-    ({ id, ingredients, orderDate, orderNumber, price }) => {
-      return (
-        <Order
-          date={orderDate}
-          ingredients={ingredients}
-          key={id}
-          number={orderNumber}
-          price={+price}
-        />
-      )
-    }
-  )
+  const ordersList = orders.map(({ id, ingredients, orderDate, orderNumber, price }, index) => {
+    return (
+      <Order
+        date={orderDate}
+        ingredients={ingredients}
+        key={id}
+        number={orderNumber}
+        price={Number(price)}
+        count={index + 1}
+      />
+    )
+  })
 
   const orderNowHandler = () => {
     history.replace('/')
@@ -57,9 +48,7 @@ const Orders = ({
     )
 
   return (
-    <div className="orders-container">
-      {isLoaded && !isLoading ? ordersRender : <Loader />}
-    </div>
+    <div className="orders-container">{isLoaded && !isLoading ? ordersRender : <Loader />}</div>
   )
 }
 
@@ -75,12 +64,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchOrders: (token, userId) =>
-      dispatch(orderActions.fetchOrders(token, userId)),
+    onFetchOrders: (token, userId) => dispatch(orderActions.fetchOrders(token, userId)),
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withErrorHandler(Orders, axios))
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axios))
