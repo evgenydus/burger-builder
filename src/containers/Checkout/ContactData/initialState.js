@@ -12,6 +12,20 @@ export const initialOrderForm = {
     isValid: false,
     isTouched: false,
   },
+  phone: {
+    elementType: 'input',
+    elementConfig: {
+      type: 'tel',
+      placeholder: 'Phone',
+    },
+    value: '',
+    validation: {
+      isRequired: true,
+      isPhone: true,
+    },
+    isValid: false,
+    isTouched: false,
+  },
   street: {
     elementType: 'input',
     elementConfig: {

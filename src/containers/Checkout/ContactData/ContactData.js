@@ -12,9 +12,116 @@ import Input from '../../../components/UI/Input/Input'
 import Loader from '../../../components/UI/Loader/Loader'
 import withErrorHandler from '../../../components/hoc/withErrorHandler/withErrorHandler'
 import { checkValidity, updateObject } from '../../../shared/utility'
-import { initialOrderForm } from './initialState'
 
-const ContactData = ({ history, ingredients, isLoading, onOrderBurger, price, token, userId }) => {
+const ContactData = ({
+  history,
+  ingredients,
+  isLoading,
+  onOrderBurger,
+  onPostUserData,
+  price,
+  token,
+  userData,
+  userId,
+}) => {
+  const initialOrderForm = {
+    name: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'text',
+        placeholder: 'Your Name',
+      },
+      value: userData.name || '',
+      validation: {
+        isRequired: true,
+      },
+      isValid: true,
+      isTouched: false,
+    },
+    phone: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'tel',
+        placeholder: 'Phone',
+      },
+      value: userData.phone || '',
+      validation: {
+        isRequired: true,
+        isPhone: true,
+      },
+      isValid: true,
+      isTouched: false,
+    },
+    street: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'text',
+        placeholder: 'Street',
+      },
+      value: '',
+      validation: {
+        isRequired: true,
+      },
+      isValid: false,
+      isTouched: false,
+    },
+    zipCode: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'text',
+        placeholder: 'ZIP Code',
+      },
+      value: '',
+      validation: {
+        isRequired: true,
+        minLength: 5,
+        maxLength: 6,
+        isNumeric: true,
+      },
+      isValid: false,
+      isTouched: false,
+    },
+    country: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'text',
+        placeholder: 'Country',
+      },
+      value: '',
+      validation: {
+        isRequired: true,
+      },
+      isValid: false,
+      isTouched: false,
+    },
+    email: {
+      elementType: 'input',
+      elementConfig: {
+        type: 'email',
+        placeholder: 'Your E-Mail',
+      },
+      value: userData.email || '',
+      validation: {
+        isRequired: true,
+        isEmail: true,
+      },
+      isValid: true,
+      isTouched: false,
+    },
+    deliveryMethod: {
+      elementType: 'select',
+      elementConfig: {
+        options: [
+          { value: 'fastest', displayValue: 'Fastest' },
+          { value: 'cheapest', displayValue: 'Cheapest' },
+        ],
+      },
+      value: 'fastest',
+      validation: {},
+      isValid: true,
+    },
+  }
+
   const [isFormValid, setIsFormValid] = useState(false)
   const [orderForm, setOrderForm] = useState(initialOrderForm)
 
@@ -43,6 +150,9 @@ const ContactData = ({ history, ingredients, isLoading, onOrderBurger, price, to
     }
 
     onOrderBurger(order, token)
+
+    const { name, phone } = orderForm
+    onPostUserData({ name: name.value, phone: phone.value })
     history.replace('/checkout/done')
   }
 
@@ -115,12 +225,14 @@ const mapStateToProps = (state) => {
     isLoading: state.order.isLoading,
     token: state.auth.token,
     userId: state.auth.userId,
+    userData: state.auth.userData,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onOrderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token)),
+    onPostUserData: (userData) => dispatch(actions.postUserData(userData)),
   }
 }
 

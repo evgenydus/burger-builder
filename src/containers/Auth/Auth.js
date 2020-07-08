@@ -9,6 +9,7 @@ import Button from '../../components/UI/Button/Button'
 import Card from '../../components/UI/Card/Card'
 import Input from '../../components/UI/Input/Input'
 import Loader from '../../components/UI/Loader/Loader'
+import PageTitle from '../../components/UI/PageTitle/PageTitle'
 import { checkValidity, updateObject } from '../../shared/utility'
 import { initialAuthForm } from './initialState'
 
@@ -20,15 +21,14 @@ const Auth = ({
   isLoading,
   onAuth,
   onSetAuthRedirectPath,
-}) => {
+  }) => {
   const [isSignUp, setIsSignUp] = useState(false)
-  const [authForm, setAuthForm] = useState(initialAuthForm.login)
+  const [authForm, setAuthForm] = useState(initialAuthForm)
 
   useEffect(() => {
     if (!isBuildingBurger && authRedirectPath !== '/') {
       onSetAuthRedirectPath()
     }
-    isSignUp ? setAuthForm(initialAuthForm.signUp) : setAuthForm(initialAuthForm.login)
   }, [authRedirectPath, onSetAuthRedirectPath, isBuildingBurger, isSignUp])
 
   const inputChangedHandler = (event, controlName) => {
@@ -62,7 +62,7 @@ const Auth = ({
     })
   }
 
-  let form = formElementsArray.map((formElement) => {
+  const form = formElementsArray.map((formElement) => {
     return (
       <Input
         changed={(event) => inputChangedHandler(event, formElement.id)}
@@ -77,24 +77,25 @@ const Auth = ({
     )
   })
 
-  if (isLoading) {
-    form = <Loader />
-  }
+  const pageTitle = isSignUp ? 'Sign Up' : 'Login'
 
   return (
-    <Card cardStyle="auth">
-      {isAuthenticated && <Redirect to={authRedirectPath} />}
-      {error && <p>{error.message}</p>}
-      <form onSubmit={submitHandler}>
-        {form}
-        <Button type="submit" btnType={['success']}>
-          Submit
+    <>
+      <PageTitle>{pageTitle}</PageTitle>
+      <Card cardStyle="auth">
+        {isAuthenticated && <Redirect to={authRedirectPath} />}
+        {error && <p>{error.message}</p>}
+        <form onSubmit={submitHandler}>
+          {!isLoading ? form : <Loader />}
+          <Button type="submit" btnType={['success']}>
+            Submit
+          </Button>
+        </form>
+        <Button btnType={['danger']} clicked={switchAuthModeHandler}>
+          Switch to {isSignUp ? 'sign in' : 'sign up'}
         </Button>
-      </form>
-      <Button btnType={['danger']} clicked={switchAuthModeHandler}>
-        Switch to {isSignUp ? 'sign in' : 'sign up'}
-      </Button>
-    </Card>
+      </Card>
+    </>
   )
 }
 

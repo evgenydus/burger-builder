@@ -15,7 +15,7 @@ import withErrorHandler from '../../components/hoc/withErrorHandler/withErrorHan
 
 export const BurgerBuilder = ({
   history,
-  ings,
+  ingredients,
   isAuthenticated,
   isBuilding,
   isError,
@@ -68,17 +68,17 @@ export const BurgerBuilder = ({
 
   let burger = isError ? <p>Ingredients can't be loaded!</p> : <Loader />
 
-  if (ings) {
+  if (ingredients) {
     burger = (
       <div className="burger-builder-container">
-        <Burger ingredients={ings} />
+        <Burger ingredients={ingredients} />
         <BuildControls
           clear={onClearBurger}
           ingredientAdded={onIngredientAdded}
           ingredientRemoved={onIngredientRemoved}
-          ings={ings}
+          ingredients={ingredients}
           isAuth={isAuthenticated}
-          isPurchasable={!updatePurchaseState(ings)}
+          isPurchasable={!updatePurchaseState(ingredients)}
           price={price}
           purchase={purchaseHandler}
         />
@@ -87,7 +87,7 @@ export const BurgerBuilder = ({
 
     orderSummary = (
       <OrderSummary
-        ingredients={ings}
+        ingredients={ingredients}
         price={price}
         purchaseCancelled={purchaseCancelHandler}
         purchaseContinue={purchaseContinueHandler}
@@ -108,7 +108,7 @@ export const BurgerBuilder = ({
 
 const mapStateToProps = (state) => {
   return {
-    ings: state.burgerBuilder.ingredients,
+    ingredients: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
     isError: state.burgerBuilder.isError,
     isAuthenticated: state.auth.token,

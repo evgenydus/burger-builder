@@ -16,7 +16,7 @@ const BuildControls = ({
   clear,
   ingredientAdded,
   ingredientRemoved,
-  ings,
+  ingredients,
   isAuth,
   isPurchasable,
   price,
@@ -27,12 +27,12 @@ const BuildControls = ({
   const orderBtnText = isAuth ? 'Order now!' : `Sign up to order`
 
   controls.forEach((ing) => {
-    ing.quantity = ings[ing.type]
+    ing.quantity = ingredients[ing.type]
   })
 
   const disabledInfo = {
-    less: { ...ings },
-    more: { ...ings },
+    less: { ...ingredients },
+    more: { ...ingredients },
   }
 
   for (let key in disabledInfo.less) {
