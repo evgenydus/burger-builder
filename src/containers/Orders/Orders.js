@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './Orders.css'
 
 import * as orderActions from '../../store/actions/index'
-import axios from '../../axios-orders'
+import axios from 'axios'
 import Button from '../../components/UI/Button/Button'
 import Loader from '../../components/UI/Loader/Loader'
 import Order from '../../components/Order/Order'

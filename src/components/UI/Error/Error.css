@@ -1,0 +1,12 @@
+.error {
+  background-color: #ea413e;
+  border-radius: 10px;
+  color: #fff;
+  display: inline-block;
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 7px 25px;
+}

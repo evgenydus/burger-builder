@@ -6,6 +6,7 @@ const initialState = {
   isLoading: false,
   isPurchasing: false,
   isLoaded: false,
+  error: null,
 }
 
 const purchaseInit = (state) => {
@@ -46,28 +47,36 @@ const fetchOrdersSuccess = (state, action) => {
   })
 }
 
-const fetchOrdersFail = (state) => {
-  return updateObject(state, { isLoading: false })
+const fetchOrdersFail = (state, action) => {
+  return updateObject(state, { isLoading: false, error: action.errorMsg })
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.PURCHASE_INIT:
       return purchaseInit(state)
+
     case actionTypes.PURCHASE_BURGER_START:
       return purchaseBurgerStart(state)
+
     case actionTypes.PURCHASE_BURGER_SUCCESS:
       return purchaseBurgerSuccess(state, action)
+
     case actionTypes.PURCHASE_BURGER_FAIL:
       return purchaseBurgerFail(state)
+
     case actionTypes.FETCH_ORDERS_START:
       return fetchOrdersStart(state)
+
     case actionTypes.FETCH_ORDERS_SUCCESS:
       return fetchOrdersSuccess(state, action)
+
     case actionTypes.FETCH_ORDERS_FAIL:
-      return fetchOrdersFail(state)
+      return fetchOrdersFail(state, action)
+
     case actionTypes.TOGGLE_ORDERS_FETCHING:
       return toggleOrdersFetching(state)
+
     default:
       return state
   }

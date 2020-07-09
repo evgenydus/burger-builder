@@ -90,8 +90,9 @@ export const auth = (email, password, isSignUp) => {
           dispatch(getUserData(idToken, email))
         }
       })
-      .catch((err) => {
-        dispatch(authFail(err.response.data.error))
+      .catch((error) => {
+        const errorMsg = error.response.data.error.message.replace(/_/, ' ')
+        dispatch(authFail(errorMsg))
       })
   }
 }

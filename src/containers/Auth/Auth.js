@@ -7,6 +7,7 @@ import './Auth.css'
 import * as actions from '../../store/actions/index'
 import Button from '../../components/UI/Button/Button'
 import Card from '../../components/UI/Card/Card'
+import Error from '../../components/UI/Error/Error'
 import Input from '../../components/UI/Input/Input'
 import Loader from '../../components/UI/Loader/Loader'
 import PageTitle from '../../components/UI/PageTitle/PageTitle'
@@ -21,7 +22,7 @@ const Auth = ({
   isLoading,
   onAuth,
   onSetAuthRedirectPath,
-  }) => {
+}) => {
   const [isSignUp, setIsSignUp] = useState(false)
   const [authForm, setAuthForm] = useState(initialAuthForm)
 
@@ -84,7 +85,7 @@ const Auth = ({
       <PageTitle>{pageTitle}</PageTitle>
       <Card cardStyle="auth">
         {isAuthenticated && <Redirect to={authRedirectPath} />}
-        {error && <p>{error.message}</p>}
+        {error && <Error>{error}</Error>}
         <form onSubmit={submitHandler}>
           {!isLoading ? form : <Loader />}
           <Button type="submit" btnType={['success']}>

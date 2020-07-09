@@ -61,10 +61,10 @@ export const fetchOrdersSuccess = (orders) => {
   }
 }
 
-export const fetchOrdersFail = (error) => {
+export const fetchOrdersFail = (errorMsg) => {
   return {
     type: actionTypes.FETCH_ORDERS_FAIL,
-    error,
+    errorMsg,
   }
 }
 
@@ -85,7 +85,8 @@ export const fetchOrders = (token, userId) => {
         dispatch(fetchOrdersSuccess(fetchedOrders))
       })
       .catch((err) => {
-        dispatch(fetchOrdersFail(err))
+        const errorMsg = 'Oops... Something went wrong'
+        dispatch(fetchOrdersFail(errorMsg))
       })
   }
 }
